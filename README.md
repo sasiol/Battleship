@@ -25,6 +25,10 @@
 
 * Projektin nimi on nyt 'hellofx'.
 
+* Tarkista että Windows -> Preferences -> Java -> Installed JREs sisältää halutun Java-version (jos ei, asenna JAva ja lisää puuttuva JRE Eclipselle tänne)
+
+* Tarkista että Run -> Run configurations -> Maven build -> hellofx -> JRE-tabin alla valittu sama, oikea JRE (projekti ei välttämättä käänny muuten)
+
 * Valitse ylävalikosta Run -> Run -> Maven build -> OK
 
 * Myöhemmillä käyttökerroilla riittää valita vain Run -> Run -> ...
