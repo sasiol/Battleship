@@ -41,7 +41,7 @@
 * Asenna Git. Tarkasta että käsky git toimii (PATH-ympäristömuuttuja
 
 * git clone https://gitlab.utu.fi/jmjmak/fxhello
-* mvn exec:java
+* mvn compile exec:java
 
 ### Problems
 
