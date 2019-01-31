@@ -1,6 +1,10 @@
 ## JavaFX Hello world
 
-### Eclipsellä
+### IDEA
+
+* Katso https://gitlab.utu.fi/jmjmak/fxhello/tree/idea
+* 
+### Eclipse
 
 * Asenna Java (mielellään versio 11, mutta versiot 10 tai 8 voivat myös toimia)
   * Versio 8 on vielä tuettu
@@ -50,4 +54,4 @@
 ### Problems
 
 Jos ohje ei toimi, yritä seuraavia 
- * https://github.com/openjfx/samples
+ * https://gitlab.utu.fi/jmjmak/fxsamples
