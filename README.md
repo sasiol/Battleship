@@ -3,7 +3,7 @@
 ### IDEA
 
 * Katso https://gitlab.utu.fi/jmjmak/fxhello/tree/idea
-* 
+
 ### Eclipse
 
 * Asenna Java (mielellään versio 11, mutta versiot 10 tai 8 voivat myös toimia)
