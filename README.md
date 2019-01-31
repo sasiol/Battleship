@@ -7,7 +7,7 @@
   * Versioden 1-7 ja 9-10 tuki on virallisesti loppunut
 
 * Asenna Eclipse
-  * versio: Eclipse IDE for Java Developers 
+  * versio: Eclipse IDE for Java Developers ( https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-java-developers )
   * testattu versiolla 4.10 / 2018-12
 
 * Varmista että Eclipseen on asennettu Eclipse Egit (git-tuki) ja Eclipse m2e (Maven-tuki).    
