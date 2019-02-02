@@ -15,5 +15,5 @@ cache:
 test:
   stage: test
   script:
-    - mvn $MAVEN_CLI_OPTS test
-    - mvn $MAVEN_CLI_OPTS exec:java 
+    - mvn $MAVEN_CLI_OPTS compile
+    - mvn $MAVEN_CLI_OPTS exec:java  -Dexec.args="--test"
