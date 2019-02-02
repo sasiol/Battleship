@@ -1,13 +1,17 @@
 ## JavaFX Hello world
 
-### Eclipsellä
+### IDEA
+
+* Katso https://gitlab.utu.fi/jmjmak/fxhello/tree/idea
+
+### Eclipse
 
 * Asenna Java (mielellään versio 11, mutta versiot 10 tai 8 voivat myös toimia)
   * Versio 8 on vielä tuettu
   * Versioden 1-7 ja 9-10 tuki on virallisesti loppunut
 
 * Asenna Eclipse
-  * versio: Eclipse IDE for Java Developers 
+  * versio: Eclipse IDE for Java Developers ( https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-java-developers )
   * testattu versiolla 4.10 / 2018-12
 
 * Varmista että Eclipseen on asennettu Eclipse Egit (git-tuki) ja Eclipse m2e (Maven-tuki).    
@@ -24,6 +28,10 @@
   * valitse Next -> Finnish
 
 * Projektin nimi on nyt 'hellofx'.
+
+* Tarkista että Windows -> Preferences -> Java -> Installed JREs sisältää halutun Java-version (jos ei, asenna JAva ja lisää puuttuva JRE Eclipselle tänne)
+
+* Tarkista että Run -> Run configurations -> Maven build -> hellofx -> JRE-tabin alla valittu sama, oikea JRE (projekti ei välttämättä käänny muuten)
 
 * Valitse ylävalikosta Run -> Run -> Maven build -> OK
 
@@ -46,4 +54,4 @@
 ### Problems
 
 Jos ohje ei toimi, yritä seuraavia 
- * https://github.com/openjfx/samples
+ * https://gitlab.utu.fi/jmjmak/fxsamples
