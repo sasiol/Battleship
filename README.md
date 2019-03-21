@@ -18,7 +18,7 @@
   * Valitse ylävalikosta File
   * -> Import
   * -> Git -> Projects from Git -> Next -> Clone URI -> Next
-  * kohtaan URI syötä: https://gitlab.utu.fi/jmjmak/fxhello
+  * kohtaan URI syötä: https://gitlab.utu.fi/tech/education/gui/fxhello
   * voit tallentaa utu-tunnukset user/password -kohtiin alle, jos haluat myöhemmin säästää kirjoitusvaivaa, mutta jos epäilet Eclipsen/koneen tietoturvaa, jätä tallentamatta
   * valitse Next -> Next -> Next (tämä kolmas Next ei toimi, jos olet jo hakenut projektin - poista ensin vanha, vinkki: hakemisto lukee Directory-kohdassa)
   * valitse Next -> Finnish
@@ -44,7 +44,7 @@
 
 * Asenna Git. Tarkasta että käsky git toimii (PATH-ympäristömuuttuja
 
-* git clone https://gitlab.utu.fi/jmjmak/fxhello
+* git clone https://gitlab.utu.fi/tech/education/gui/fxhello
 * mvn compile exec:java
 
 ### Problems
