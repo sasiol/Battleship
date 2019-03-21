@@ -1,9 +1,5 @@
 ## JavaFX Hello world
 
-### IDEA
-
-* Katso https://gitlab.utu.fi/jmjmak/fxhello/tree/idea
-
 ### Eclipse
 
 * Asenna Java (mielellään versio 11, mutta versiot 10 tai 8 voivat myös toimia)
@@ -53,5 +49,8 @@
 
 ### Problems
 
-Jos ohje ei toimi, yritä seuraavia 
- * https://gitlab.utu.fi/jmjmak/fxsamples
+* Jos koneelle on asennettu useita Java-versioita samaan aikaan, Eclipse voi
+  epäonnistua käynnistämään projektia, jos Eclipse on itse käynnistynyt eri
+  Java-versiota käyttäen (oletus Java 8) kuin projekti
+  (voi olla säädetty esim. 11). Korjaus: vaihda projektin Java-versio tai
+  poista ylimääräiset Java-asennukset.
