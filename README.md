@@ -1,56 +1,39 @@
-## JavaFX Hello world
+# Project description
 
-### Eclipse
+Simple template for projects that make use of JavaFX and FXML (Scene Builder).
+Requires Java 11 or later. Compatible with
+Eclipse and IntelliJ IDEA. Minor issues with Netbeans. Automatically
+integrates with Gitlab CI.
 
-* Asenna Java (mielellään versio 11, mutta versiot 10 tai 8 voivat myös toimia)
-  * Versio 8 on vielä tuettu
-  * Versioden 1-7 ja 9-10 tuki on virallisesti loppunut
+## Installation
 
-* Asenna Eclipse
-  * versio: Eclipse IDE for Java Developers ( https://www.eclipse.org/downloads/packages/release/2018-12/r/eclipse-ide-java-developers )
-  * testattu versiolla 4.10 / 2018-12
+Maven:
 
-* Varmista että Eclipseen on asennettu Eclipse Egit (git-tuki) ja Eclipse m2e (Maven-tuki).    
-  * Jos jompi kumpi puuttuu, etsi netistä ohjeet näiden asentamiseksi
-  * pluginien pitäisi olla 2018-12 Java-versiossa 
+```bash
+$ git clone https://gitlab.utu.fi/tech/education/gui/template-javafx
 
-* Käynnistä Eclipse
-  * Valitse ylävalikosta File
-  * -> Import
-  * -> Git -> Projects from Git -> Next -> Clone URI -> Next
-  * kohtaan URI syötä: https://gitlab.utu.fi/tech/education/gui/fxhello
-  * voit tallentaa utu-tunnukset user/password -kohtiin alle, jos haluat myöhemmin säästää kirjoitusvaivaa, mutta jos epäilet Eclipsen/koneen tietoturvaa, jätä tallentamatta
-  * valitse Next -> Next -> Next (tämä kolmas Next ei toimi, jos olet jo hakenut projektin - poista ensin vanha, vinkki: hakemisto lukee Directory-kohdassa)
-  * valitse Next -> Finnish
+$ cd template-javafx
 
-* Projektin nimi on nyt 'hellofx'.
+$ mvn compile exec:java
+```
 
-* Tarkista että Windows -> Preferences -> Java -> Installed JREs sisältää halutun Java-version (jos ei, asenna JAva ja lisää puuttuva JRE Eclipselle tänne)
+SBT:
 
-* Tarkista että Run -> Run configurations -> Maven build -> hellofx -> JRE-tabin alla valittu sama, oikea JRE (projekti ei välttämättä käänny muuten)
+```bash
+$ git clone https://gitlab.utu.fi/tech/education/gui/template-javafx
 
-* Valitse ylävalikosta Run -> Run -> Maven build -> OK
+$ cd template-javafx
 
-* Myöhemmillä käyttökerroilla riittää valita vain Run -> Run -> ...
+$ sbt compile run
+```
 
-### Komentoriviltä
+## Further instructions
 
-* Asenna Java (mielellään versio 11, mutta versiot 10 tai 8 voivat myös toimia)
-  * Versio 8 on vielä tuettu
-  * Versioden 1-7 ja 9-10 tuki on virallisesti loppunut
-  * Tarkasta että käskyt java ja javac toimivat (PATH-ympäristömuuttuja)
+  * Java platform: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/jvm-platform
+  * Maven: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/maven-misc
+  * SBT: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/sbt-misc
+  
+External sources:
 
-* Asenna Maven. Tarkasta että käsky mvn toimii (PATH-ympäristömuuttuja)
-
-* Asenna Git. Tarkasta että käsky git toimii (PATH-ympäristömuuttuja
-
-* git clone https://gitlab.utu.fi/tech/education/gui/fxhello
-* mvn compile exec:java
-
-### Problems
-
-* Jos koneelle on asennettu useita Java-versioita samaan aikaan, Eclipse voi
-  epäonnistua käynnistämään projektia, jos Eclipse on itse käynnistynyt eri
-  Java-versiota käyttäen (oletus Java 8) kuin projekti
-  (voi olla säädetty esim. 11). Korjaus: vaihda projektin Java-versio tai
-  poista ylimääräiset Java-asennukset.
+  * JavaFX: https://openjfx.io/javadoc/11/
+  * Scene Builder: https://docs.gluonhq.com/scenebuilder/
