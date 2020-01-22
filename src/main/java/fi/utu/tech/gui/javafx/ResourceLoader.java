@@ -3,11 +3,11 @@ package fi.utu.tech.gui.javafx;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-class ResourceLoader<N extends Parent, C> {
+public class ResourceLoader<N extends Parent, C> {
     protected final N root;
     protected final C controller;
 
-    ResourceLoader(String contentPath) {
+    public ResourceLoader(String contentPath) {
         N root_ = null;
         C controller_ = null;
         try {

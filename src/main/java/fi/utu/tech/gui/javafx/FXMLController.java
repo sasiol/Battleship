@@ -20,32 +20,32 @@ public class FXMLController {
     @FXML
     private Label clicksLabel;
 
-    void updateClicks() {
+    protected void updateClicks() {
         if (!clicksLabel.textProperty().isBound())
             clicksLabel.textProperty().bind(clicks.asString().concat(" clicks."));
 
         clicks.setValue(clicks.getValue() + 1);
     }
 
-    void setLabel(String text) {
+    protected void setLabel(String text) {
         if (!clicksLabel.textProperty().isBound())
             clicksLabel.setText(text);
     }
 
     @FXML
-    void handleDialogButton(ActionEvent event) {
+    protected void handleDialogButton(ActionEvent event) {
         updateClicks();
         Dialogs.warning("Example dialog", "Content header", "Content");
     }
 
     @FXML
-    void handleExitButton(ActionEvent event) {
+    protected void handleExitButton(ActionEvent event) {
         System.out.println("Closing app.");
         Platform.exit();
     }
 
     @FXML
-    void handleWindowButton(ActionEvent event) {
+    protected void handleWindowButton(ActionEvent event) {
         updateClicks();
         Scene other = new Scene(supplier.get());
         Stage otherStage = new Stage();
@@ -53,7 +53,7 @@ public class FXMLController {
         otherStage.show();
     }
 
-    void setWindowFactory(Supplier<Parent> supplier) {
+    protected void setWindowFactory(Supplier<Parent> supplier) {
         this.supplier = supplier;
     }
 
