@@ -5,12 +5,17 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.util.function.Supplier;
+
 public class FXMLController {
     private IntegerProperty clicks = new SimpleIntegerProperty(0);
+
+    private Supplier<Parent> supplier;
 
     @FXML
     private Label clicksLabel;
@@ -42,10 +47,14 @@ public class FXMLController {
     @FXML
     void handleWindowButton(ActionEvent event) {
         updateClicks();
-        Scene other = new Scene(new OtherWindow());
+        Scene other = new Scene(supplier.get());
         Stage otherStage = new Stage();
         otherStage.setScene(other);
         otherStage.show();
+    }
+
+    void setWindowFactory(Supplier<Parent> supplier) {
+        this.supplier = supplier;
     }
 
     public void initialize() {
