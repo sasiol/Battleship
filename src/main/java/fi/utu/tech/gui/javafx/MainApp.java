@@ -33,6 +33,10 @@ public class MainApp extends Application {
     protected Parent createWindow() {
         return new OtherWindow();
     }
+    
+    protected String createStyle() {
+        return ResourceLoader.stylesheet("styles.css");
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -45,7 +49,7 @@ public class MainApp extends Application {
         loader.controller.setWindowFactory(this::createWindow);
 
         Scene scene = new Scene(loader.root);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        scene.getStylesheets().add(createStyle());
         
         stage.setTitle("JavaFX template");
         stage.setScene(scene);
