@@ -39,7 +39,7 @@ public class MainApp extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         System.out.println("Stage C");
         ResourceLoader<Parent, FXMLController> loader = new ResourceLoader<>("scene.fxml");
 

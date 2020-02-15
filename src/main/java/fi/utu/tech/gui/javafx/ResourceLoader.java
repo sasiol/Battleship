@@ -7,12 +7,16 @@ public class ResourceLoader<N extends Parent, C> {
     protected final N root;
     protected final C controller;
 
+    protected Class<?> resourceRoot() {
+        return getClass();
+    }
+
     public ResourceLoader(String contentPath) {
         N root_ = null;
         C controller_ = null;
         try {
             // determines where to look for the resources (the root path)
-            Class resourceRootClass = getClass();
+            Class<?> resourceRootClass = resourceRoot();
 
             FXMLLoader loader = new FXMLLoader(resourceRootClass.getResource(contentPath));
             root_ = loader.load();

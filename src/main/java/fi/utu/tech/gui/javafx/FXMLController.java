@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.util.function.Supplier;
 
 public class FXMLController {
-    private IntegerProperty clicks = new SimpleIntegerProperty(0);
+    private final IntegerProperty clicks = new SimpleIntegerProperty(0);
 
     private Supplier<Parent> supplier;
 
