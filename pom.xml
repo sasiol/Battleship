@@ -2,20 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--
-
-      Welcome!
-      This pom.xml is *THE* file that defines your Maven style Java project.
-
-      Eclipse, IDEA and other development environments with Maven support
-      or plugins can *import* this project by reading this file.
-
-      It usually contains tons of barely readable configuration. Luckily
-      this basic pom.xml is somewhat readable. All necessary configuration
-      for customizing your project if located here on top before the
-      'END OF SIMPLE CONFIGURATION' line below.
-
-    -->
+    <!-- See https://tech.utugit.fi/soft/tools/lectures/tko8971/build/ -->
     
     <!-- ==== START OF SIMPLE CONFIGURATION ==== -->
 
@@ -40,10 +27,10 @@
 
         <!-- Version numbers for various modules -->
         <jdk.version>11</jdk.version>
-        <jqwik.version>1.2.7</jqwik.version>
-        <junit.version>5.6.1</junit.version>
-        <junitplatform.version>1.6.1</junitplatform.version>
-        <javafx.version>14</javafx.version>
+        <jqwik.version>1.3.10</jqwik.version>
+        <junit.version>5.7.0</junit.version>
+        <junitplatform.version>1.7.0</junitplatform.version>
+        <javafx.version>15.0.1</javafx.version>
     </properties>
 
     <!-- ==== END OF SIMPLE CONFIGURATION ==== -->
@@ -159,7 +146,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -167,6 +154,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
@@ -192,7 +180,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -213,7 +201,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>3.2.0</version>
                 <configuration>
                     <!-- DO NOT include log4j.properties file in your Jar -->
                     <excludes>
@@ -225,17 +213,6 @@
                             <mainClass>${project.mainclass}</mainClass>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-
-            <!-- download source code in Eclipse, best practice -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.10</version>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>false</downloadJavadocs>
                 </configuration>
             </plugin>
 
@@ -369,7 +346,7 @@
                  Modular testing works via command line mvn, but is
                  still broken in Eclipse due to this
                  https://bugs.eclipse.org/bugs/show_bug.cgi?id=520667
-              -->
+
             <plugin>
                 <groupId>de.sormuras.junit</groupId>
                 <artifactId>junit-platform-maven-plugin</artifactId>
@@ -378,17 +355,16 @@
                 <configuration>
                     <executor>JAVA</executor>
                 </configuration>
-            </plugin>
+            </plugin>-->
 
-            <!--
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <version>3.0.0-M5</version>
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M3</version>
-            </plugin> -->
+                <version>3.0.0-M5</version>
+            </plugin>
 
             <!-- javafx:jlink:
                  https://github.com/openjfx/javafx-maven-plugin
@@ -408,13 +384,8 @@
             <!-- Enables the use of SSH for deployments -->
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh-external</artifactId>
-                <version>3.3.3</version>
-            </extension>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-ssh</artifactId>
-                <version>3.3.3</version>
+                <version>3.4.2</version>
             </extension>
         </extensions>
     </build>
