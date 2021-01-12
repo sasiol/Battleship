@@ -23,6 +23,7 @@ public class ResourceLoader<N extends Parent, C> {
             controller_ = loader.getController();
             System.out.println("DEBUG: " + contentPath + " loaded.");
         } catch (Exception e) {
+            e.printStackTrace();
             Dialogs.warning(
                     "Internal error",
                     "Could not open FXML file: " + contentPath,

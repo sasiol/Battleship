@@ -10,4 +10,5 @@ module fi.utu.tech.gui.javafx {
   requires transitive javafx.media;
   requires transitive javafx.web;
   exports fi.utu.tech.gui.javafx;
+  opens fi.utu.tech.gui.javafx;
 }
