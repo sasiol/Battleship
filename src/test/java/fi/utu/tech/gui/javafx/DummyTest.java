@@ -1,4 +1,4 @@
-package fi.utu.tech.hotreload;
+package fi.utu.tech.gui.javafx;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
