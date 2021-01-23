@@ -18,10 +18,10 @@ description := "JavaFX project template"
 Compile/mainClass := Some("fi.utu.tech.gui.javafx.Main")
 
 // force the java version by typing it here (remove the comment)
-val force_javaVersion = None // Some(13)
+val force_javaVersion = None // Some(15)
 
 // force the javafx version by typing it here (remove the comment)
-val force_javaFxVersion = None // Some(13)
+val force_javaFxVersion = None // Some(15)
 
 val useJavaFX = true
 
@@ -50,7 +50,7 @@ val javaVersionString = javaVersionNum match {
 }
 
 val lts = 11
-val dev = 13
+val dev = 15
 
 val supported = javaVersionNum match {
   case x if x < 8              => fail("Your Java installation is obsolete. Please upgrade to Java " + lts + "LTS")
@@ -93,7 +93,7 @@ javaVersion := { println("SBT uses Java SDK located at "+System.getProperty("jav
 
 publishTo := Some(Resolver.file("file", new File("/tmp/repository")))
 
-val oomkit = "fi.utu.tech" % "oomkit" % "1.15"
+val oomkit = "fi.utu.tech" % "oomkit" % "1.22"
 
 libraryDependencies ++= Seq()
 
@@ -103,7 +103,7 @@ libraryDependencies ++= Seq()
 
 resolvers in ThisBuild += Resolver.jcenterRepo
 
-val junit_version = "5.5.2"
+val junit_version = "5.7.0"
 
 // library dependencies. (orginization name) % (project name) % (version)
 libraryDependencies ++= Seq(
@@ -114,7 +114,7 @@ libraryDependencies ++= Seq(
   "org.junit.jupiter"  % "junit-jupiter-api"              % junit_version % Test,
   "org.junit.jupiter"  % "junit-jupiter-migrationsupport" % junit_version % Test,
   "org.junit.jupiter"  % "junit-jupiter-params"           % junit_version % Test,
-  "net.jqwik"          % "jqwik"                          % "1.2.0" % Test,
+  "net.jqwik"          % "jqwik"                          % "1.3.10" % Test,
   "org.scalatest"      %% "scalatest"                     % "3.0.8" % Test,
 )
 
@@ -127,8 +127,8 @@ testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-c")
 val javafx_versions = if (!useJavaFX) (0,"-","-") else (force_javaFxVersion getOrElse javaVersionNum) match {
   case 7 => (7, "7", "8.0.181-R13")
   case 8 => (8, "8", "8.0.181-R13")
-  case 10 => (11, "11.0.2", "11-R16")
-  case x if x>10 => (13, "13", "12.0.2-R18")
+//  case 10 => (11, "11.0.2", "11-R16")
+  case x if x>10 => (15, "15.0.1", "15.0.1-R21")
   case _ => fail("Unsupported Java version for JavaFX")
 }
 
