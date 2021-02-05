@@ -82,6 +82,9 @@ application{
 }
 
 tasks {
+    getByName<ProcessResources>("processResources") {
+            duplicatesStrategy = DuplicatesStrategy.INCLUDE // allow duplicates
+    }
     getByName<Jar>("jar") {
             doFirst {
                 manifest {
