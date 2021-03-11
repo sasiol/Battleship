@@ -14,7 +14,7 @@ $ git clone https://gitlab.utu.fi/tech/education/gui/template-javafx
 
 $ cd template-javafx
 
-$ mvn compile exec:java
+$ mvn javafx:run
 ```
 
 SBT:
@@ -32,7 +32,7 @@ $ sbt compile run
   * Java platform: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/jvm-platform
   * Maven: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/maven-misc
   * SBT: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/sbt-misc
-  
+
 External sources:
 
   * JavaFX: https://openjfx.io/javadoc/11/

@@ -33,7 +33,7 @@ public class MainApp extends Application {
     protected Parent createWindow() {
         return new OtherWindow();
     }
-    
+
     protected String createStyle() {
         return ResourceLoader.stylesheet("styles.css");
     }
@@ -50,7 +50,7 @@ public class MainApp extends Application {
 
         Scene scene = new Scene(loader.root);
         scene.getStylesheets().add(createStyle());
-        
+
         stage.setTitle("JavaFX template");
         stage.setScene(scene);
         stage.show();
