@@ -3,6 +3,8 @@
 
 module fi.utu.tech.gui.javafx {
   //requires java.desktop;
+  requires kotlin.stdlib;
+  requires kotlin.stdlib.jdk8;
   requires transitive javafx.base;
   requires transitive javafx.fxml;
   requires transitive javafx.controls;

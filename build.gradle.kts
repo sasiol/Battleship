@@ -18,7 +18,8 @@ version = "1.0"
 
 plugins {
     java
-    id("org.beryx.jlink") version "2.21.0"
+    id("org.beryx.jlink") version "2.23.5"
+    id("org.jetbrains.kotlin.jvm") version "1.4.31"
     application
 }
 
@@ -47,12 +48,14 @@ repositories {
 }
 
 dependencies {
-    implementation("fi.utu.tech", "hotreload", "1.0.0")
-    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.0")
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.0")
-    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.0")
-    testImplementation("org.junit.platform", "junit-platform-commons", "1.7.0")
-    testImplementation("net.jqwik", "jqwik", "1.3.10")
+    implementation("fi.utu.tech", "hotreload", "2.0.0")
+    implementation("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", "1.4.31")
+    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.1")
+    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.1")
+    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.1")
+    testImplementation("org.junit.platform", "junit-platform-commons", "1.7.1")
+    testImplementation("net.jqwik", "jqwik", "1.5.0")
+
     val jfxOptions = object {
         val group = "org.openjfx"
         val version = "15.0.1"
@@ -61,6 +64,7 @@ dependencies {
           "javafx-fxml", "javafx-media", "javafx-web"
         )
     }
+
     jfxOptions.run {
         val osName = System.getProperty("os.name")
         val platform = when {
@@ -82,9 +86,14 @@ application{
 }
 
 tasks {
+    test {
+        useJUnitPlatform()
+    }
+
     getByName<ProcessResources>("processResources") {
             duplicatesStrategy = DuplicatesStrategy.INCLUDE // allow duplicates
     }
+
     getByName<Jar>("jar") {
             doFirst {
                 manifest {
@@ -97,6 +106,7 @@ tasks {
                 }
             }
     }
+
     compileJava {
         options.encoding = "UTF-8"
     }

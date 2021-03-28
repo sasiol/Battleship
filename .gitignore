@@ -18,3 +18,4 @@ project/*-shim.sbt
 project/target/
 target/
 openjfx/
+.gradle/
