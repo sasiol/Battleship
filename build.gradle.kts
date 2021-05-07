@@ -3,14 +3,13 @@ version = "2.0.0"
 
 plugins {
     java
-    kotlin("jvm") version "1.4.31"
-    id("org.openjfx.javafxplugin") version "0.0.9"
-    id("org.beryx.jlink") version "2.23.5"
+    kotlin("jvm") version "1.5.0"
+    id("org.openjfx.javafxplugin") version "0.0.10"
+    id("org.beryx.jlink") version "2.23.8"
     application
 }
 
 java {
-    modularity.inferModulePath.set(true)
     sourceCompatibility = org.gradle.api.JavaVersion.VERSION_11
 
     sourceSets["main"].java {
@@ -39,12 +38,12 @@ repositories {
 
 dependencies {
     implementation("fi.utu.tech", "hotreload", "2.0.0")
-    implementation("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", "1.4.31")
+    implementation("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", "1.5.0")
     testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.1")
     testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.1")
     testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.1")
     testImplementation("org.junit.platform", "junit-platform-commons", "1.7.1")
-    testImplementation("net.jqwik", "jqwik", "1.5.0")
+    testImplementation("net.jqwik", "jqwik", "1.5.1")
 }
 
 application{
@@ -64,7 +63,11 @@ tasks {
     }
 }
 
-jlink{
+tasks.named<org.gradle.language.jvm.tasks.ProcessResources>("processResources") {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+jlink {
     launcher {
         name = "launch"
     }

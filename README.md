@@ -27,8 +27,8 @@ $ git clone https://gitlab.utu.fi/tech/education/gui/template-javafx
 
 $ cd template-javafx
 
-$ gradle build
-$ gradle run
+$ ./gradlew build
+$ ./gradlew run
 ```
 
 ### SBT
@@ -54,5 +54,5 @@ $ sbt run
 
 External sources:
 
-  * JavaFX: https://openjfx.io/javadoc/11/
+  * JavaFX: https://openjfx.io/javadoc/16/
   * Scene Builder: https://docs.gluonhq.com/scenebuilder/
