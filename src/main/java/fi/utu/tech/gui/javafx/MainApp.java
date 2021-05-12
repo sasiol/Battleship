@@ -11,7 +11,8 @@ public class MainApp extends Application {
 
     // The JavaFX runtime does the following, in order, whenever an application is launched:
 
-    // 1. Starts the JavaFX runtime, if not already started (see Platform.startup(Runnable) for more information)
+    // 1. Starts the JavaFX runtime, if not already started (see Platform.startup(Runnable) for more
+    // information)
     // 2. Constructs an instance of the specified Application class
     // 3. Calls the Application's init() method
     // 4. Calls the Application's start(javafx.stage.Stage) method

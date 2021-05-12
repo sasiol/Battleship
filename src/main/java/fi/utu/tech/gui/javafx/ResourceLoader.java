@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 public class ResourceLoader<N extends Parent, C> {
+
     protected final N root;
     protected final C controller;
 
@@ -27,8 +28,7 @@ public class ResourceLoader<N extends Parent, C> {
             Dialogs.warning(
                     "Internal error",
                     "Could not open FXML file: " + contentPath,
-                    "Reason: " + e.getMessage()
-            );
+                    "Reason: " + e.getMessage());
             System.exit(1);
         }
         root = root_;

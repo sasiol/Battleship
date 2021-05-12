@@ -1,14 +1,14 @@
 package fi.utu.tech.gui.javafx;
 
+import java.io.File;
+import java.util.Optional;
+import java.util.function.Consumer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.FileChooser;
 
-import java.io.File;
-import java.util.Optional;
-import java.util.function.Consumer;
-
 public class Dialogs {
+
     /**
      * Warning dialog.
      *
@@ -43,7 +43,8 @@ public class Dialogs {
     }
 
     /**
-     * Save/load file dialog for a single file. Propagates the file name (if not null) to the handler.
+     * Save/load file dialog for a single file. Propagates the file name (if not null) to the
+     * handler.
      *
      * @param title
      * @param type
@@ -51,17 +52,18 @@ public class Dialogs {
      * @param saveDialog
      * @param handler
      */
-    public static void singleFileDialog(String title, String type, String ext, boolean saveDialog, Consumer<File> handler) {
+    public static void singleFileDialog(
+            String title, String type, String ext, boolean saveDialog, Consumer<File> handler) {
         FileChooser chooser = new FileChooser();
-        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(type + " (." + ext + ")", "*." + ext));
+        chooser.getExtensionFilters()
+                .add(new FileChooser.ExtensionFilter(type + " (." + ext + ")", "*." + ext));
         chooser.setTitle(title);
         File selected;
         if (saveDialog) {
             selected = chooser.showSaveDialog(null);
             if (selected == null) return;
             String file = selected.getAbsolutePath();
-            if (!file.endsWith("." + ext))
-                file += "." + ext;
+            if (!file.endsWith("." + ext)) file += "." + ext;
             selected = new File(file);
         } else {
             selected = chooser.showOpenDialog(null);

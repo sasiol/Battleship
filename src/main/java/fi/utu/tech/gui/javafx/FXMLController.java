@@ -1,5 +1,6 @@
 package fi.utu.tech.gui.javafx;
 
+import java.util.function.Supplier;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -10,15 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.util.function.Supplier;
-
 public class FXMLController {
+
     private final IntegerProperty clicks = new SimpleIntegerProperty(0);
 
     private Supplier<Parent> supplier;
 
-    @FXML
-    private Label clicksLabel;
+    @FXML private Label clicksLabel;
 
     protected void updateClicks() {
         if (!clicksLabel.textProperty().isBound())
@@ -28,8 +27,7 @@ public class FXMLController {
     }
 
     protected void setLabel(String text) {
-        if (!clicksLabel.textProperty().isBound())
-            clicksLabel.setText(text);
+        if (!clicksLabel.textProperty().isBound()) clicksLabel.setText(text);
     }
 
     @FXML

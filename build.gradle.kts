@@ -47,7 +47,6 @@ dependencies {
 }
 
 application{
-    modularity.disableEffectiveArgumentsAdjustment()
     mainModule.set("fi.utu.tech.gui.javafx")
     mainClass.set("fi.utu.tech.gui.javafx.Main")
     applicationDefaultJvmArgs = arrayListOf("-ea")
@@ -71,5 +70,8 @@ jlink {
     launcher {
         name = "launch"
     }
+
+    // https://github.com/beryx/badass-jlink-plugin/issues/165
+    forceMerge("kotlin")
     imageZip.set(project.file("${project.buildDir}/image-zip/template-javafx-image.zip"))
 }
