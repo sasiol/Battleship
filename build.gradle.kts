@@ -3,9 +3,9 @@ version = "2.0.0"
 
 plugins {
     java
-    kotlin("jvm") version "1.5.0"
+    kotlin("jvm") version "1.5.21"
     id("org.openjfx.javafxplugin") version "0.0.10"
-    id("org.beryx.jlink") version "2.23.8"
+    id("org.beryx.jlink") version "2.24.0"
     application
 }
 
@@ -32,18 +32,19 @@ javafx {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven("https://ftdev.utu.fi/maven2")
 }
 
 dependencies {
     implementation("fi.utu.tech", "hotreload", "2.0.0")
-    implementation("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", "1.5.0")
-    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.1")
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.1")
-    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.1")
-    testImplementation("org.junit.platform", "junit-platform-commons", "1.7.1")
-    testImplementation("net.jqwik", "jqwik", "1.5.1")
+    implementation("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", "1.5.21")
+    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.2")
+    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.2")
+    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.2")
+    testImplementation("org.junit.platform", "junit-platform-commons", "1.7.2")
+    testImplementation("net.jqwik", "jqwik", "1.5.3")
 }
 
 application{
@@ -60,10 +61,13 @@ tasks {
     compileJava {
         options.encoding = "UTF-8"
     }
-}
-
-tasks.named<org.gradle.language.jvm.tasks.ProcessResources>("processResources") {
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    
+    getByName<ProcessResources>("processResources") {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE // allow duplicates
+    }
+    getByName<ProcessResources>("processTestResources") {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE // allow duplicates
+    }
 }
 
 jlink {

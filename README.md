@@ -2,7 +2,7 @@
 
 Simple template for projects that make use of JavaFX and FXML (Scene Builder).
 Requires Java 11 or later. Compatible with Eclipse and IntelliJ IDEA.
-Minor issues with Netbeans. Automatically integrates with Gitlab CI.
+Minor issues with Netbeans. Automatically integrates with the Gitlab CI.
 
 ## Installation
 
