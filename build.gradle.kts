@@ -1,12 +1,15 @@
 group = "fi.utu.tech"
-version = "2.0.0"
+version = "2.0.1"
 
 plugins {
     java
-    kotlin("jvm") version "1.5.21"
+    kotlin("jvm") version "1.6.10"
+    // https://github.com/openjfx/javafx-gradle-plugin/releases
     id("org.openjfx.javafxplugin") version "0.0.10"
-    id("org.beryx.jlink") version "2.24.2"
+    // https://github.com/beryx/badass-jlink-plugin
+    id("org.beryx.jlink") version "2.24.4"
     application
+    `maven-publish`
 }
 
 java {
@@ -27,7 +30,7 @@ java {
 }
 
 javafx {
-    version = "16"
+    version = "17.0.1"
     modules = listOf("javafx.controls", "javafx.fxml", "javafx.graphics", "javafx.media", "javafx.web")
 }
 
@@ -38,13 +41,13 @@ repositories {
 }
 
 dependencies {
-    implementation("fi.utu.tech", "hotreload", "2.0.0")
-    implementation("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", "1.5.21")
-    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.2")
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.2")
-    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.2")
-    testImplementation("org.junit.platform", "junit-platform-commons", "1.7.2")
-    testImplementation("net.jqwik", "jqwik", "1.5.3")
+    implementation("fi.utu.tech", "hotreload", "2.0.1")
+    implementation("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", "1.6.10")
+    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.8.2")
+    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.8.2")
+    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.8.2")
+    testImplementation("org.junit.platform", "junit-platform-commons", "1.8.2")
+    testImplementation("net.jqwik", "jqwik", "1.6.2")
 }
 
 application{

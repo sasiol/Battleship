@@ -50,7 +50,7 @@ val javaVersionString = javaVersionNum match {
 }
 
 val lts = 11
-val dev = 16
+val dev = 17
 
 val supported = javaVersionNum match {
   case x if x < 8              => fail("Your Java installation is obsolete. Please upgrade to Java " + lts + "LTS")
@@ -103,7 +103,7 @@ libraryDependencies ++= Seq(hotreload)
 
 resolvers in ThisBuild += Resolver.jcenterRepo
 
-val junit_version = "5.7.1"
+val junit_version = "5.7.2"
 
 // library dependencies. (orginization name) % (project name) % (version)
 libraryDependencies ++= Seq(
@@ -114,7 +114,7 @@ libraryDependencies ++= Seq(
   "org.junit.jupiter"  % "junit-jupiter-api"              % junit_version % Test,
   "org.junit.jupiter"  % "junit-jupiter-migrationsupport" % junit_version % Test,
   "org.junit.jupiter"  % "junit-jupiter-params"           % junit_version % Test,
-  "net.jqwik"          % "jqwik"                          % "1.5.0" % Test,
+  "net.jqwik"          % "jqwik"                          % "1.6.2" % Test,
   "org.scalatest"      %% "scalatest"                     % "3.2.6" % Test,
 )
 
