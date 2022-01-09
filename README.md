@@ -48,9 +48,10 @@ $ sbt run
 
 ## Further instructions
 
-  * Java platform: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/jvm-platform
-  * Maven: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/maven-misc
-  * SBT: https://gitlab.utu.fi/soft/ftdev/wikis/tutorials/sbt-misc
+  * Java platform: https://tech.utugit.fi/soft/tools/lectures/dtek0065/devtools/
+  * Maven: https://tech.utugit.fi/soft/tools/lectures/dtek0065/build/basic/
+  * Gradle: https://tech.utugit.fi/soft/tools/lectures/dtek0065/build/gradle/
+  * SBT: https://tech.utugit.fi/soft/tools/lectures/dtek0065/build/sbt/
 
 External sources:
 
