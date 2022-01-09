@@ -26,7 +26,6 @@
 
         <!-- Version numbers for various modules -->
         <jdk.version>11</jdk.version>
-        <kotlin.version>1.6.10</kotlin.version>
         <jqwik.version>1.6.2</jqwik.version>
         <junit.version>5.8.2</junit.version>
         <junitplatform.version>1.8.2</junitplatform.version>
@@ -81,23 +80,6 @@
             <groupId>net.jqwik</groupId>
             <artifactId>jqwik</artifactId>
             <version>${jqwik.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -378,27 +360,27 @@
                         <tag>
                             <name>toDo</name>
                             <placement>a</placement>
-                            <head>To&nbsp;do:</head>
+                            <head>To do:</head>
                         </tag>
                         <tag>
                             <name>classInvariant</name>
                             <placement>t</placement>
-                            <head>Class&nbsp;invariant:</head>
+                            <head>Class invariant:</head>
                         </tag>
                         <tag>
                             <name>classInvariantProtected</name>
                             <placement>t</placement>
-                            <head>Protected&nbsp;class&nbsp;invariant:</head>
+                            <head>Protected class invariant:</head>
                         </tag>
                         <tag>
                             <name>classInvariantPrivate</name>
                             <placement>t</placement>
-                            <head>Private&nbsp;class&nbsp;invariant:</head>
+                            <head>Private class invariant:</head>
                         </tag>
                         <tag>
                             <name>abstractionFunction</name>
                             <placement>t</placement>
-                            <head>Abstraction&nbsp;function:</head>
+                            <head>Abstraction function:</head>
                         </tag>
                         <tag>
                             <name>pre</name>
@@ -413,22 +395,22 @@
                         <tag>
                             <name>postProtected</name>
                             <placement>cm</placement>
-                            <head>Protected&nbsp;postcondition:</head>
+                            <head>Protected postcondition:</head>
                         </tag>
                         <tag>
                             <name>postPrivate</name>
                             <placement>cm</placement>
-                            <head>Private&nbsp;postcondition:</head>
+                            <head>Private postcondition:</head>
                         </tag>
                         <tag>
                             <name>time</name>
                             <placement>cmf</placement>
-                            <head>Time&nbsp;complexity:</head>
+                            <head>Time complexity:</head>
                         </tag>
                         <tag>
                             <name>space</name>
                             <placement>cmf</placement>
-                            <head>Space&nbsp;complexity:</head>
+                            <head>Space complexity:</head>
                         </tag>
                         <tag>
                             <name>correspondence</name>
@@ -475,35 +457,6 @@
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M5</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration
-                ><!--
-                    <args>
-                        <arg>-Xuse-ir</arg>
-                    </args> -->
-                    <jvmTarget>${jdk.version}</jvmTarget>
-                </configuration>
             </plugin>
 
         </plugins>

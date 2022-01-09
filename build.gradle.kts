@@ -3,7 +3,6 @@ version = "2.0.1"
 
 plugins {
     java
-    kotlin("jvm") version "1.6.10"
     // https://github.com/openjfx/javafx-gradle-plugin/releases
     id("org.openjfx.javafxplugin") version "0.0.10"
     // https://github.com/beryx/badass-jlink-plugin
@@ -42,7 +41,6 @@ repositories {
 
 dependencies {
     implementation("fi.utu.tech", "hotreload", "2.0.1")
-    implementation("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", "1.6.10")
     testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.8.2")
     testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.8.2")
     testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.8.2")
@@ -78,7 +76,5 @@ jlink {
         name = "launch"
     }
 
-    // https://github.com/beryx/badass-jlink-plugin/issues/165
-    forceMerge("kotlin")
     imageZip.set(project.file("${project.buildDir}/image-zip/template-javafx-image.zip"))
 }
