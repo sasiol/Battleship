@@ -54,5 +54,5 @@ $ sbt run
 
 External sources:
 
-  * JavaFX: https://openjfx.io/javadoc/16/
+  * JavaFX: https://openjfx.io/javadoc/17/
   * Scene Builder: https://docs.gluonhq.com/scenebuilder/
