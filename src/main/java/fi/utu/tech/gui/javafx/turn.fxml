@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.SceneController">
+   <center>
+      <Label text="Peliruutu" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Pelaajan nimi" />
+            <Button fx:id="turnButton" alignment="CENTER" mnemonicParsing="false" onAction="#switchToBetweenScreen" text="Turn over" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#switchToWinScreen" prefHeight="24.0" prefWidth="84.0" text="Joku voitti" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
