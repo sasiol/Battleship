@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -31,6 +32,8 @@ public class SceneController {
 	@FXML 
 	private Button startGameButton;
 	
+	
+	
 
 	//palaa menu-stageen
 	@FXML
@@ -40,6 +43,8 @@ public class SceneController {
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+		
+		//tän controllerissa luoda listan laivoja joka välittään setshipsControllerille, joka asettaa ne laivaparkkiin
 	}
 
 	//siirry stageen laivojen asettamista varten
@@ -47,9 +52,18 @@ public class SceneController {
 	//ja tyyliin kun molemmat laudat on asetettu niin tulee nkyviin nappi et peli alkaa
 	@FXML
 	public void switchToBoardCreation(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
+		//
+		FXMLLoader loader= new FXMLLoader(getClass().getResource("board.fxml"));
+		Parent root = loader.load();
+		setShipsController sscontroller=loader.getController();
+		
+//		sscontroller.displayLauta();
+//		sscontroller.displayShips();
+		
+		
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -57,21 +71,18 @@ public class SceneController {
 	//siirry pelivuoro-stageen
 	@FXML
 	public void switchToTurnScreen(ActionEvent event) throws IOException{
+		
 		Parent root = FXMLLoader.load(getClass().getResource("turn.fxml"));
+		
+		
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
 	
-	@FXML
-	public void switchToBetweenScreen(ActionEvent event) throws IOException{
-		Parent root = FXMLLoader.load(getClass().getResource("betweenScreen.fxml"));
-		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
+
+	
 	
 	@FXML
 	public void switchToWinScreen(ActionEvent event) throws IOException{

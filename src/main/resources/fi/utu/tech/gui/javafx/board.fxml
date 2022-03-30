@@ -6,36 +6,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.SceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.setShipsController">
    <center>
       <BorderPane prefHeight="356.0" prefWidth="408.0" BorderPane.alignment="CENTER">
          <right>
-            <VBox alignment="CENTER" prefHeight="356.0" prefWidth="144.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="315.0" prefWidth="195.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="nimi" alignment="CENTER" text="Pelaajan nimi?" />
-                  <Button mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Continue" />
+                  <VBox fx:id="laivaParkki" prefHeight="272.0" prefWidth="144.0" />
+                  <Button fx:id="Ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready" />
                   <Button fx:id="startGameButton" mnemonicParsing="false" onAction="#switchToBetweenScreen" prefHeight="24.0" prefWidth="111.0" text="Start Game" visible="false" />
                </children>
             </VBox>
          </right>
          <center>
-            <VBox alignment="CENTER" prefHeight="315.0" prefWidth="123.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="kenttaNappi" mnemonicParsing="false" onAction="#shipsArePlaced" text="Onko kenttä täytetty?" />
-               </children>
-            </VBox>
+            <VBox alignment="CENTER" prefHeight="315.0" prefWidth="123.0" BorderPane.alignment="CENTER" />
          </center>
          <left>
-            <VBox alignment="CENTER" prefHeight="315.0" prefWidth="266.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="Kenttä?" />
-               </children>
-            </VBox>
+            <VBox fx:id="psLauta" alignment="CENTER" prefHeight="308.0" prefWidth="411.0" BorderPane.alignment="CENTER" />
          </left>
       </BorderPane>
    </center>
    <top>
-      <VBox alignment="CENTER" prefHeight="85.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="psIkkuna" alignment="CENTER" prefHeight="85.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Place ships">
                <font>
