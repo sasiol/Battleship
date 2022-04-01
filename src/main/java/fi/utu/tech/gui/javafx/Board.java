@@ -39,22 +39,24 @@ public class Board extends Pane{
 		this.setStyle("-fx-background-color:green");
 		
 		this.setOnDragDropped(e->{
+			System.out.println("Dragdropped");
 			Dragboard db= e.getDragboard();
 			String Sid=db.getString();
 			Ship la=(Ship) this.lookup(Sid);
-			if(la!=null) {
+			//if(la!=null) {
 				laivaParkki.getChildren().remove(la);
 				this.getChildren().add(la);
-			}
+			
 		});
 	
 	this.setOnDragOver(e->{
-		
+		System.out.println("DragOver");
 		e.acceptTransferModes(TransferMode.MOVE);
 		e.consume();
 	});
 
 	this.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+		
 		if (event.getCode() == KeyCode.R) {
 			prest.setRotate(prest.getRotate()+90);
 			((Shape) prest).setFill(Color.GRAY);

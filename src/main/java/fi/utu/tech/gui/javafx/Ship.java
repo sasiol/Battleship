@@ -38,6 +38,10 @@ public class Ship extends Rectangle{
 			lauta.setPrest(this);
 
 		});
+		this.setOnMouseDragged(e->{
+			this.setLayoutX(e.getSceneX() - startX);
+			this.setLayoutY(e.getSceneY() - startY);
+		});
 
 		this.setOnDragDetected(e -> {
 			
@@ -50,8 +54,7 @@ public class Ship extends Rectangle{
 			System.out.println("Tiomii" + e.getSceneX());
 			Ship source=(Ship)e.getSource();
 	
-			source.setLayoutX(e.getSceneX() - startX);
-			source.setLayoutY(e.getSceneY() - startY);
+			
 			
 			e.consume();
 
