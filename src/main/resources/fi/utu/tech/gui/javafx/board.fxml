@@ -14,8 +14,8 @@
                <children>
                   <Label fx:id="nimi" alignment="CENTER" text="Pelaajan nimi?" />
                   <VBox fx:id="laivaParkki" prefHeight="272.0" prefWidth="144.0" />
+                  <Button fx:id="nextscene" mnemonicParsing="false" onAction="#switchToBetweenScreen" text="Next scene" />
                   <Button fx:id="Ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready" />
-                  <Button fx:id="startGameButton" mnemonicParsing="false" onAction="#switchToBetweenScreen" prefHeight="24.0" prefWidth="111.0" text="Start Game" visible="false" />
                </children>
             </VBox>
          </right>
