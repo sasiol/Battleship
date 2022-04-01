@@ -31,21 +31,25 @@ public class Board extends Pane{
 	Pane lauta;
 	private Ship prest;
 	@FXML
-	private VBox laivaParkki;
+	private Pane laivaParkki;
 	
-	public Board() {
+	public Board(Pane laivaParkki) {
 		super();
 		this.setPrefSize(400, 500);
 		this.setStyle("-fx-background-color:green");
+		this.laivaParkki=laivaParkki;
 		
 		this.setOnDragDropped(e->{
 			System.out.println("Dragdropped");
 			Dragboard db= e.getDragboard();
 			String Sid=db.getString();
-			Ship la=(Ship) this.lookup(Sid);
-			//if(la!=null) {
+			Ship la=(Ship) laivaParkki.lookup(Sid);
+			System.out.println(Sid);
+			if(la!=null) {
+				System.out.println("Toimii");
 				laivaParkki.getChildren().remove(la);
 				this.getChildren().add(la);
+			}
 			
 		});
 	
