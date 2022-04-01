@@ -20,6 +20,7 @@ public class Ship extends Rectangle{
 	
 	public Ship(Board lauta) {
 		super(80, 120, Color.RED);
+		this.setId(id.toString());
 		this.lauta=lauta;
 		makeDraggable();
 	}
