@@ -41,7 +41,7 @@ public class setShipsController{
 	
 }
 	public void displayLauta() {
-		lauta=new Board();
+		lauta=new Board(laivaParkki);
 		psLauta.getChildren().add(lauta);
 		
 	}
