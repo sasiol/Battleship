@@ -3,6 +3,7 @@ package fi.utu.tech.gui.javafx;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -43,11 +44,18 @@ public class Board extends Pane{
 			System.out.println("Dragdropped");
 			Dragboard db= e.getDragboard();
 			String Sid=db.getString();
-			Ship la=(Ship) laivaParkki.lookup(Sid);
+			Ship la=(Ship) laivaParkki.lookup("#"+Sid);
 			System.out.println(Sid);
 			if(la!=null) {
 				System.out.println("Toimii");
 				laivaParkki.getChildren().remove(la);
+				System.out.println(la.getBoundsInLocal());
+				Bounds boundsInScene = la.localToScene(la.getBoundsInLocal());
+				la.setLayoutX(boundsInScene.getCenterX());
+				la.setLayoutY(boundsInScene.getCenterY());
+				//Double x =db.getX()+la.getLayoutX();
+//				Double y=e.getY();
+				
 				this.getChildren().add(la);
 			}
 			
