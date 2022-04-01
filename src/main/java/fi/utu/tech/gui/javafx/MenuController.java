@@ -22,11 +22,10 @@ public class MenuController {
 	// päivittyä?
 	// ja tyyliin kun molemmat laudat on asetettu niin tulee nkyviin nappi et peli
 	// alkaa
-<<<<<<< HEAD
-=======
+
 	//Josba heitä tää sun kontrolleriin ja laita tilalle et miten mennään sun sceneen
 	// Eli vaihda nimi ja fxml-tiedoston nimi JA fxml tiedostoissa ne nappuloiden metodit
->>>>>>> refs/remotes/origin/master
+
 	@FXML
 	public void switchToBoardCreation(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
