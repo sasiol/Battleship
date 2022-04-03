@@ -54,7 +54,7 @@ public class Board extends Pane{
 				laivaParkki.getChildren().remove(la);
 				System.out.println(la.getBoundsInLocal());
 				Bounds boundsInScene = la.localToScene(la.getBoundsInLocal());
-				location=new Point2D(e.getX(), e.getY());
+				Point2D location=new Point2D(e.getX(), e.getY());
 				la.setLayoutX(location.getX());
 				la.setLayoutY(location.getY());
 				//Double x =db.getX()+la.getLayoutX();
