@@ -35,11 +35,7 @@ public class Board extends Pane{
 	@FXML
 	private Pane laivaParkki;
 	
-<<<<<<< HEAD
 
-=======
-	private Point2D newCoords;
->>>>>>> refs/heads/Sinin
 	
 	public Board(Pane laivaParkki) {
 		super();
@@ -51,40 +47,20 @@ public class Board extends Pane{
 			System.out.println("Dragdropped");
 			Dragboard db= e.getDragboard();
 			String Sid=db.getString();
-<<<<<<< HEAD
 			Ship la=(Ship) laivaParkki.lookup("#"+Sid);
-=======
-			Ship la=(Ship) laivaParkki.lookup(Sid);
->>>>>>> refs/heads/Sinin
 			System.out.println(Sid);
 			if(la!=null) {
 				System.out.println("Toimii");
 				laivaParkki.getChildren().remove(la);
 				System.out.println(la.getBoundsInLocal());
 				Bounds boundsInScene = la.localToScene(la.getBoundsInLocal());
-<<<<<<< HEAD
-				Point2D location=new Point2D(e.getX(), e.getY());
+				location=new Point2D(e.getX(), e.getY());
 				la.setLayoutX(location.getX());
 				la.setLayoutY(location.getY());
 				//Double x =db.getX()+la.getLayoutX();
 //				Double y=e.getY();
 				
-=======
-//				la.setLayoutX(newCoords.getX()-boundsInScene.getCenterX());
-//				la.setLayoutY(newCoords.getY()-boundsInScene.getCenterY());
-				//Double x =db.getX()+la.getLayoutX();
-//				Double y=e.getY();
-				
-				System.out.println(newCoords);
-				Point2D location = la.sceneToLocal(newCoords);
-//				la.setLayoutX(location.getX());
-//				la.setLayoutY(location.getY());
-				System.out.println(location.getX());
-				System.out.println(location.getY());
->>>>>>> refs/heads/Sinin
 				this.getChildren().add(la);
-			}
-			
 			}
 			
 		});
@@ -92,12 +68,7 @@ public class Board extends Pane{
 	this.setOnDragOver(e->{
 		System.out.println("DragOver");
 		e.acceptTransferModes(TransferMode.MOVE);
-<<<<<<< HEAD
 		
-=======
-		newCoords=new Point2D(e.getX(), e.getY());
-	//	System.out.println(newCoords);
->>>>>>> refs/heads/Sinin
 		e.consume();
 	});
 
