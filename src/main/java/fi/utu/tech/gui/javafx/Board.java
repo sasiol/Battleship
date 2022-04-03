@@ -3,6 +3,8 @@ package fi.utu.tech.gui.javafx;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -33,6 +35,8 @@ public class Board extends Pane{
 	@FXML
 	private Pane laivaParkki;
 	
+	private Point2D newCoords;
+	
 	public Board(Pane laivaParkki) {
 		super();
 		this.setPrefSize(400, 500);
@@ -48,7 +52,21 @@ public class Board extends Pane{
 			if(la!=null) {
 				System.out.println("Toimii");
 				laivaParkki.getChildren().remove(la);
+				System.out.println(la.getBoundsInLocal());
+				Bounds boundsInScene = la.localToScene(la.getBoundsInLocal());
+//				la.setLayoutX(newCoords.getX()-boundsInScene.getCenterX());
+//				la.setLayoutY(newCoords.getY()-boundsInScene.getCenterY());
+				//Double x =db.getX()+la.getLayoutX();
+//				Double y=e.getY();
+				
+				System.out.println(newCoords);
+				Point2D location = la.sceneToLocal(newCoords);
+//				la.setLayoutX(location.getX());
+//				la.setLayoutY(location.getY());
+				System.out.println(location.getX());
+				System.out.println(location.getY());
 				this.getChildren().add(la);
+			
 			}
 			
 		});
@@ -56,6 +74,8 @@ public class Board extends Pane{
 	this.setOnDragOver(e->{
 		System.out.println("DragOver");
 		e.acceptTransferModes(TransferMode.MOVE);
+		newCoords=new Point2D(e.getX(), e.getY());
+	//	System.out.println(newCoords);
 		e.consume();
 	});
 
