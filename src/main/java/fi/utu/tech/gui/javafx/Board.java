@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
+
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -32,6 +35,9 @@ import javafx.scene.input.TransferMode;
 public class Board extends Pane{
 	Pane lauta;
 	private Ship prest;
+	private int koko;
+	private ArrayList<Integer> alukset = new ArrayList<>();
+	
 	@FXML
 	private Pane laivaParkki;
 	
@@ -39,6 +45,7 @@ public class Board extends Pane{
 	
 	public Board(Pane laivaParkki) {
 		super();
+		koko = this.getKoko();
 		this.setPrefSize(400, 500);
 		this.setStyle("-fx-background-color:green");
 		this.laivaParkki=laivaParkki;
@@ -83,5 +90,21 @@ public class Board extends Pane{
 	
 	public void setPrest(Ship laiva) {
 		this.prest=laiva;
+	}
+	
+	public void setKoko(int k) {
+		this.koko = k;
+	}
+
+	public int getKoko() {
+		return this.koko;
+	}
+	
+	public ArrayList<Integer> getAlukset() {
+		return alukset;
+	}
+
+	public void setAlukset(ArrayList<Integer> alukset) {
+		this.alukset = alukset;
 	}
 }

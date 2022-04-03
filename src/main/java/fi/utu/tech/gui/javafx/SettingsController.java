@@ -17,7 +17,11 @@ import javafx.scene.input.MouseEvent;
 
 public class SettingsController {
 	
+<<<<<<< HEAD
 	private Lauta lauta = new Lauta();
+=======
+	private Board lauta = new Board();
+>>>>>>> a6fe879 (luokat)
 	private Pelaaja player1 = new Pelaaja();
 	private Pelaaja player2 = new Pelaaja();
 		
