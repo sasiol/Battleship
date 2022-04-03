@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
@@ -16,6 +17,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class setShipsController{
+	
+	//placeholder, joskus start game nappula, joka tulee kun molemmat laudat on asetettu ja peli voi alkaa
+	@FXML
+	private Button nextscene;
 	@FXML
 	private boolean arePlaced;
 	@FXML
