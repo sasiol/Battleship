@@ -14,6 +14,8 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class setShipsController{
@@ -39,14 +41,45 @@ public class setShipsController{
 		displayShips();
 	}
 	
+	
+	
+//	//saavat parametreina kuinka monta pitää tehdä
+//	public void createLentotukialus(){
+//		Ship laiva=new Ship(lauta);
+//		laiva.setWidth(50);
+//		laiva.setHeight(50);
+//	}
+//public void createTaistelulaiva(){
+//	Ship laiva=new Ship(lauta);
+//	laiva.setWidth(40);
+//	laiva.setHeight(40);
+//	}
+//public void createRisteilija(){
+//	Ship laiva=new Ship(lauta);
+//	laiva.setWidth(30);
+//	laiva.setHeight(30);
+//}
+//public void createSukellusvene(){
+//	Ship laiva=new Ship(lauta);
+//	laiva.setWidth(30);
+//	laiva.setHeight(30);
+//}
+//public void createHavittaja(){
+//	Ship laiva=new Ship(lauta);
+//	laiva.setWidth(20);
+//	laiva.setHeight(20);
+//}
+//	
 	public void displayShips() {
 		Ship laiva=new Ship(lauta);
+		laiva.setWidth(50);
+		laiva.setHeight(80);
 	
-	laivaParkki.getChildren().add(laiva);
+	laivaParkki.getChildren().addAll(laiva);
 	
 }
 	public void displayLauta() {
-		lauta=new Board();
+		lauta=new Board(laivaParkki);
 		psLauta.getChildren().add(lauta);
 		
 	}
