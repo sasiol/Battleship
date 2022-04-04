@@ -17,9 +17,10 @@ public class Ship extends Rectangle{
 	private UUID id= UUID.randomUUID();
 		private Node prest;
 		private Board lauta;
+		private int hp;
 	
 	public Ship(Board lauta) {
-		super(80, 120, Color.RED);
+	//	super( Color.RED);
 		this.setId(id.toString());
 		this.lauta=lauta;
 		makeDraggable();
