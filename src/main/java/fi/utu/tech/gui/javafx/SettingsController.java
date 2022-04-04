@@ -98,7 +98,8 @@ public class SettingsController {
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
 		//välitettävät tiedot
-		int koko=Integer.parseInt(laudanKoko.getText());
+		int koko=Character.getNumericValue((laudanKoko.getText()).charAt(0));
+		
 		
 		
 			FXMLLoader loader=new FXMLLoader(getClass().getResource("board.fxml"));
@@ -106,6 +107,7 @@ public class SettingsController {
 			
 			//välitetään tiedot
 			setShipsController shipsController=loader.getController();
+			shipsController.displayLauta(koko);
 			
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);

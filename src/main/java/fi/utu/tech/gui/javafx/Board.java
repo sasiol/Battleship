@@ -40,7 +40,7 @@ public class Board extends Pane{
 	
 
 	
-	public Board(Pane laivaParkki) {
+	public Board(Pane laivaParkki, int koko) {
 		super();
 		this.setPrefSize(400, 400);
 		this.setStyle("-fx-background-color:white");
@@ -97,3 +97,4 @@ public class Board extends Pane{
 		this.prest=laiva;
 	}
 }
+

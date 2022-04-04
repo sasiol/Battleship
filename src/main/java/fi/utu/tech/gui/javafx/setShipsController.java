@@ -38,7 +38,7 @@ public class setShipsController{
 	private Board lauta;
 	
 	public void initialize() {
-		displayLauta();
+		
 		displayShips();
 	}
 	
@@ -79,8 +79,9 @@ public class setShipsController{
 	laivaParkki.getChildren().addAll(laiva);
 	
 }
-	public void displayLauta() {
-		lauta=new Board(laivaParkki);
+	public void displayLauta(int koko) {
+		lauta=new Board(laivaParkki, koko);
+		System.out.println(koko);
 		psLauta.getChildren().add(lauta);
 		
 	}
