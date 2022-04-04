@@ -10,12 +10,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class MenuController {
 
 	@FXML
 	private Button start;
+	@FXML
+	private BorderPane menupane;
 
 	// siirry stageen laivojen asettamista varten
 	// jos lauta asetetaan johonkin olioon/muuttujaan niin ehkä tää voi vaan
