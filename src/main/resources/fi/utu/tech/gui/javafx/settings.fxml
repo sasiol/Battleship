@@ -24,7 +24,7 @@
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </HBox.margin>
             </Label>
-            <Button fx:id="valmis" mnemonicParsing="false" onAction="#valmisKlikattu" text="Valmis" HBox.hgrow="ALWAYS">
+            <Button fx:id="valmis" mnemonicParsing="false" onMouseClicked="#switchToBoardCreation" text="Valmis" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </HBox.margin>
