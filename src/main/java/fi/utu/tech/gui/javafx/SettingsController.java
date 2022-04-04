@@ -65,9 +65,16 @@ public class SettingsController {
 		
 	public void initialize() {
 		ruudut.setText("0");
-		ValueFactory<Integer> valuelta = new ValueFactory<Integer>(lta,5,1,Integer.parseInt(ruudut.getText()));
+		ValueFactory<Integer> valuelta = new ValueFactory<Integer>(lta,5,1,ruudut);
 		lta.setValueFactory(valuelta);
-		
+		ValueFactory<Integer> valuetl = new ValueFactory<Integer>(tl,4,2,ruudut);
+		tl.setValueFactory(valuetl);
+		ValueFactory<Integer> valuer = new ValueFactory<Integer>(r,3,3,ruudut);
+		r.setValueFactory(valuer);
+		ValueFactory<Integer> valuesv = new ValueFactory<Integer>(sv,2,4,ruudut);
+		sv.setValueFactory(valuesv);
+		ValueFactory<Integer> valueh = new ValueFactory<Integer>(h,2,5,ruudut);
+		h.setValueFactory(valueh);
 	}
 	
 	@FXML
@@ -79,13 +86,13 @@ public class SettingsController {
 		ruudut.setText(String.valueOf(lauta.getKoko()*lauta.getKoko()/2));
 	}
 	
+	
 	@FXML
 	void paivitaRuudut(MouseEvent event) {
 		System.out.println("klikattu");
 		@SuppressWarnings("unchecked")
 		Spinner<Integer> kohde = (Spinner<Integer>) event.getSource();
 		ValueFactory<Integer> factory = (ValueFactory<Integer>) kohde.getValueFactory();
-		ruudut.setText(String.valueOf(factory.getRuudut()));	
 	}
 	
 	@FXML
