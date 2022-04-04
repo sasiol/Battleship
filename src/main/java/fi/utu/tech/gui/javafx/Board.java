@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -39,9 +40,17 @@ public class Board extends Pane{
 	
 	public Board(Pane laivaParkki) {
 		super();
-		this.setPrefSize(400, 500);
-		this.setStyle("-fx-background-color:green");
+		this.setPrefSize(400, 400);
+		this.setStyle("-fx-background-color:white");
 		this.laivaParkki=laivaParkki;
+		
+		double ruutKoko=400/5;
+		
+		for(int i=0; i<6; i++) {
+			Line lineY=new Line(i*ruutKoko, 0, i*ruutKoko, 400);
+			Line lineX=new Line(0, i*ruutKoko, 400, i*ruutKoko);
+		this.getChildren().addAll(lineY,lineX);
+		}
 		
 		this.setOnDragDropped(e->{
 			System.out.println("Dragdropped");
