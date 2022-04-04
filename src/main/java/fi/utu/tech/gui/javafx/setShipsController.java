@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+//hhhhh
 public class setShipsController{
 	
 	//placeholder, joskus start game nappula, joka tulee kun molemmat laudat on asetettu ja peli voi alkaa
