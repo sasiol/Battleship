@@ -36,6 +36,8 @@ public class Board extends Pane{
 	@FXML
 	private Pane laivaParkki;
 	
+	private int koko;
+	
 
 	
 	public Board(Pane laivaParkki) {
@@ -43,6 +45,7 @@ public class Board extends Pane{
 		this.setPrefSize(400, 400);
 		this.setStyle("-fx-background-color:white");
 		this.laivaParkki=laivaParkki;
+		this.koko=koko;
 		
 		double ruutKoko=400/5;
 		

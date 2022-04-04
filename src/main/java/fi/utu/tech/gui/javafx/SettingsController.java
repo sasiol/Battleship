@@ -97,7 +97,16 @@ public class SettingsController {
 	
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
-			Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
+		//välitettävät tiedot
+		int koko=Integer.parseInt(laudanKoko.getText());
+		
+		
+			FXMLLoader loader=new FXMLLoader(getClass().getResource("board.fxml"));
+			Parent root = loader.load();
+			
+			//välitetään tiedot
+			setShipsController shipsController=loader.getController();
+			
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
