@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.assignment1.SettingsController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.SettingsController">
    <children>
       <HBox maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="657.0" VBox.vgrow="ALWAYS">
          <children>
@@ -24,7 +24,7 @@
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </HBox.margin>
             </Label>
-            <Button fx:id="valmis" mnemonicParsing="false" onMouseClicked="#switchToBoardCreation" text="Valmis" HBox.hgrow="ALWAYS">
+            <Button fx:id="valmis" mnemonicParsing="false" onAction="#valmisKlikattu" text="Valmis" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </HBox.margin>
