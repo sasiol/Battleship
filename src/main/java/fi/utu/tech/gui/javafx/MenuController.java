@@ -25,8 +25,8 @@ public class MenuController {
 	//Josba heitä tää sun kontrolleriin ja laita tilalle et miten mennään sun sceneen
 	// Eli vaihda nimi ja fxml-tiedoston nimi JA fxml tiedostoissa ne nappuloiden metodit
 	@FXML
-	public void switchToBoardCreation(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
+	public void switchToSettings(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("settings.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
