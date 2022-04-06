@@ -93,7 +93,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <Spinner fx:id="lta" onMouseClicked="#paivitaRuudut">
+                              <Spinner fx:id="lta">
                                  <VBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </VBox.margin>
@@ -103,7 +103,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <Spinner fx:id="tl" onMouseClicked="#paivitaRuudut">
+                              <Spinner fx:id="tl">
                                  <VBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </VBox.margin>
@@ -113,7 +113,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <Spinner fx:id="r" onMouseClicked="#paivitaRuudut">
+                              <Spinner fx:id="r">
                                  <VBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </VBox.margin>
@@ -127,7 +127,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <Spinner fx:id="sv" onMouseClicked="#paivitaRuudut">
+                              <Spinner fx:id="sv">
                                  <VBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </VBox.margin>
@@ -137,7 +137,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <Spinner fx:id="h" onMouseClicked="#paivitaRuudut">
+                              <Spinner fx:id="h">
                                  <VBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </VBox.margin>
