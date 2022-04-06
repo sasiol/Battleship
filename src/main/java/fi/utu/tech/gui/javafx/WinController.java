@@ -9,9 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class WinController {
+	@FXML
+	private BorderPane winpane;
 
 	// palaa menu-stageen
 	@FXML
@@ -19,6 +22,9 @@ public class WinController {
 		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		
+		scene.getStylesheets().addAll(this.getClass().getResource("winscreenstyle.css").toExternalForm());
+		
 		stage.setScene(scene);
 		stage.show();
 	}

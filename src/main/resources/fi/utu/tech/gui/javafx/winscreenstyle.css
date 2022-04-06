@@ -1,5 +1,5 @@
-#menupane{
-    -fx-background-image: url("battleship.jpg");
+#winpane{
+    -fx-background-image: url("wspic.jpg");
     -fx-background-color: black;
     -fx-background-repeat: stretch;   
     -fx-background-size: 900 506;
