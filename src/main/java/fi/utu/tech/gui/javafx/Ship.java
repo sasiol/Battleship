@@ -25,10 +25,19 @@ public class Ship extends Rectangle{
 		this.lauta=lauta;
 		makeDraggable();
 	}
+	
+	public UUID getLaivaId() {
+		return id;
+	}
 
 	// Drag effect
 	private double startX;
 	private double startY;
+	
+	public void setStartCoords(double x, double y) {
+		this.startX=x;
+		this.startY=y;
+	}
 
 	void makeDraggable() {
 

@@ -61,6 +61,8 @@ public class SettingsController {
 	private Spinner<Integer> h;
 	@FXML
 	private Label ruudut;
+	
+	private String koko;
 
 		
 	public void initialize() {
@@ -79,7 +81,7 @@ public class SettingsController {
 	
 	@FXML
 	void laudanKokoValittu(ActionEvent event) {
-		String koko = ((MenuItem) event.getSource()).getText();
+		koko = ((MenuItem) event.getSource()).getText();
 		laudanKoko.setText(koko+"x"+koko);
 		lauta.setKoko(Integer.parseInt(koko));
 		System.out.println("Laudan koko: " + lauta.getKoko());
@@ -97,25 +99,38 @@ public class SettingsController {
 	
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
-			Parent root = FXMLLoader.load(getClass().getResource("board.fxml"));
+		//välitettävät tiedot
+//		player1.setNimi(p1.getText());
+//		player2.setNimi(p2.getText());
+	
+		System.out.println(lta.getValue());
+		System.out.println(r.getValue());
+	
+	//
+		
+		
+		
+			FXMLLoader loader=new FXMLLoader(getClass().getResource("board.fxml"));
+			Parent root = loader.load();
+			
+			//välitetään tiedot
+			setShipsController shipsController=loader.getController();
+			//lauta
+			shipsController.displayLauta(Integer.valueOf(koko));
+			//laivat
+			shipsController.createLentotukialus(lta.getValue(),Integer.valueOf(koko) );
+			shipsController.createTaistelulaiva(tl.getValue(),Integer.valueOf(koko) );
+			shipsController.createRisteilija(r.getValue(),Integer.valueOf(koko) );
+			shipsController.createSukellusvene(sv.getValue(),Integer.valueOf(koko) );
+			shipsController.createHavittaja(h.getValue(),Integer.valueOf(koko) );
+			
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
 		
-//		System.out.println("valmis");
-//		player1.setNimi(p1.getText());
-//		player2.setNimi(p2.getText());
-//		ArrayList<Integer> alukset = new ArrayList<>();
-//		alukset.add(lta.getValue());
-//		alukset.add(tl.getValue());
-//		alukset.add(r.getValue());
-//		alukset.add(sv.getValue());
-//		alukset.add(h.getValue());
-//		lauta.setAlukset(alukset);
-//		System.out.println(player1.getNimi());
-//		System.out.println(player2.getNimi());
-//		System.out.println(alukset);
+		
+		
 
 	}
 	
