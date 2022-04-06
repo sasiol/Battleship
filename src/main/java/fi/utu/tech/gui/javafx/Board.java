@@ -9,23 +9,45 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 
 public class Board extends Pane{
 	Pane lauta;
 	private Ship prest;
 	@FXML
-	private Pane laivaParkki;
+	private StackPane laivaParkki;
+	
+	private int koko;
 	
 
 	
-	public Board(Pane laivaParkki) {
+	public Board(StackPane laivaParkki, int koko) {
 		super();
-		this.setPrefSize(400, 500);
-		this.setStyle("-fx-background-color:green");
-		this.laivaParkki=laivaParkki;
+		//this.setPrefSize(400, 400);
+		this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		
+		this.setScaleShape(true);
+		this.setStyle("-fx-background-color:white");
+		this.laivaParkki=laivaParkki;
+		this.koko=koko;
+		
+		//asetetaan oiean kokoinen ruudukko
+		double ruutKoko=400/koko;
+		
+		for(int i=0; i<koko+1; i++) {
+			Line lineY=new Line(i*ruutKoko, 0, i*ruutKoko, 400);
+			Line lineX=new Line(0, i*ruutKoko, 400, i*ruutKoko);
+		this.getChildren().addAll(lineY,lineX);
+		}
+		
+		//asetetaan kasvamaan ikkunan kanssa
+		
+		
+		
+		//asetetaan drag and drop
 		this.setOnDragDropped(e->{
 			System.out.println("Dragdropped");
 			Dragboard db= e.getDragboard();
