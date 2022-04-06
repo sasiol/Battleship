@@ -14,7 +14,7 @@ import javafx.scene.shape.Shape;
 
 public class Ship extends Rectangle{
 	// onko nodea klikattu
-	private UUID id= UUID.randomUUID();
+	UUID id= UUID.randomUUID();
 		private Node prest;
 		private Board lauta;
 		private int hp;
@@ -25,10 +25,19 @@ public class Ship extends Rectangle{
 		this.lauta=lauta;
 		makeDraggable();
 	}
+	
+	public UUID getLaivaId() {
+		return id;
+	}
 
 	// Drag effect
 	private double startX;
 	private double startY;
+	
+	public void setStartCoords(double x, double y) {
+		this.startX=x;
+		this.startY=y;
+	}
 
 	void makeDraggable() {
 
@@ -46,15 +55,14 @@ public class Ship extends Rectangle{
 		});
 
 		this.setOnDragDetected(e -> {
-			
+			//System.out.println("drag detetecyted");
 			//dragboard
-			Dragboard db=this.startDragAndDrop(TransferMode.MOVE);
+			Dragboard db=this.startDragAndDrop(TransferMode.ANY);
 			 ClipboardContent content = new ClipboardContent();
 			content.putString(this.id.toString());
 			db.setContent(content);
 			
-			System.out.println("Tiomii" + e.getSceneX());
-			Ship source=(Ship)e.getSource();
+			//Ship source=(Ship)e.getSource();
 	
 			
 			

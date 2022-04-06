@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -24,6 +25,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.control.Label;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -31,42 +33,84 @@ import javafx.scene.input.TransferMode;
 
 public class Board extends Pane{
 	Pane lauta;
-	private Ship prest;
+	private Ship prest=new Ship(null);
 	@FXML
-	private Pane laivaParkki;
+	private StackPane laivaParkki;
+	
+	private int koko;
 	
 
 	
-	public Board(Pane laivaParkki) {
+	public Board(StackPane laivaParkki, int koko) {
 		super();
-		this.setPrefSize(400, 500);
-		this.setStyle("-fx-background-color:green");
-		this.laivaParkki=laivaParkki;
+		//this.setPrefSize(400, 400);
+		this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		
+		this.setScaleShape(true);
+		this.setStyle("-fx-background-color:white");
+		this.laivaParkki=laivaParkki;
+		this.koko=koko;
+		
+		//asetetaan oiean kokoinen ruudukko
+		double ruutKoko=400/koko;
+		
+		for(int i=0; i<koko+1; i++) {
+			Line lineY=new Line(i*ruutKoko, 0, i*ruutKoko, 400);
+			Line lineX=new Line(0, i*ruutKoko, 400, i*ruutKoko);
+		this.getChildren().addAll(lineY,lineX);
+		}
+		
+		
+		
+	
+		
+		
+		//asetetaan drag and drop
 		this.setOnDragDropped(e->{
-			System.out.println("Dragdropped");
 			Dragboard db= e.getDragboard();
 			String Sid=db.getString();
+			
 			Ship la=(Ship) laivaParkki.lookup("#"+Sid);
-			System.out.println(Sid);
+			Ship lala=(Ship) this.lookup("#"+Sid);
+			System.out.println("hee hee");
+			
+			//laivaparkista laudalle siirto
 			if(la!=null) {
-				System.out.println("Toimii");
+				System.out.println("nulli pulli");
+				
 				laivaParkki.getChildren().remove(la);
-				System.out.println(la.getBoundsInLocal());
+				
 				Bounds boundsInScene = la.localToScene(la.getBoundsInLocal());
 				Point2D location=new Point2D(e.getX(), e.getY());
 				la.setLayoutX(location.getX());
 				la.setLayoutY(location.getY());
-				//Double x =db.getX()+la.getLayoutX();
-//				Double y=e.getY();
+
 				
 				this.getChildren().add(la);
+				e.setDropCompleted(true);
 			}
+			
+			//laudan sisällä liikuttelu
+			else if(lala!=null){
+				System.out.println("laudan sisällä jejee");
+				
+				
+				Bounds boundsInScene = lala.localToScene(lala.getBoundsInLocal());
+				Point2D location=new Point2D(e.getX(), e.getY());
+				lala.relocate(location.getX(),location.getY());
+				//prest.setLayoutY(location.getY());
+
+				
+				//this.getChildren().add(prest);
+				e.setDropCompleted(true);
+			}
+			
+			
 			
 		});
 	
 	this.setOnDragOver(e->{
-		System.out.println("DragOver");
+		System.out.println("DragOveeerr");
 		e.acceptTransferModes(TransferMode.MOVE);
 		
 		e.consume();
@@ -76,12 +120,32 @@ public class Board extends Pane{
 		
 		if (event.getCode() == KeyCode.R) {
 			prest.setRotate(prest.getRotate()+90);
-			((Shape) prest).setFill(Color.GRAY);
+			
+		}
+		//voi liikutella ylös ja alas
+		if (event.getCode() == KeyCode.UP) {
+			prest.setLayoutY(prest.getLayoutY()-10);
+			
+		}
+		if (event.getCode() == KeyCode.DOWN) {
+			prest.setLayoutY(prest.getLayoutY()+10);
+			
+		}
+		if (event.getCode() == KeyCode.LEFT) {
+			prest.setLayoutX(prest.getLayoutX()-10);
+			
+		}
+		if (event.getCode() == KeyCode.RIGHT) {
+			prest.setLayoutX(prest.getLayoutX()+10);
+			
 		}
 	});
+	
+	
 	}
 	
 	public void setPrest(Ship laiva) {
 		this.prest=laiva;
 	}
 }
+
