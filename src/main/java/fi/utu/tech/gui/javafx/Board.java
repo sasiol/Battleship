@@ -25,6 +25,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.control.Label;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -32,7 +33,7 @@ import javafx.scene.input.TransferMode;
 
 public class Board extends Pane{
 	Pane lauta;
-	private Ship prest;
+	private Ship prest=new Ship(null);
 	@FXML
 	private StackPane laivaParkki;
 	
@@ -59,35 +60,57 @@ public class Board extends Pane{
 		this.getChildren().addAll(lineY,lineX);
 		}
 		
-		//asetetaan kasvamaan ikkunan kanssa
 		
+		
+	
 		
 		
 		//asetetaan drag and drop
 		this.setOnDragDropped(e->{
-			System.out.println("Dragdropped");
 			Dragboard db= e.getDragboard();
 			String Sid=db.getString();
+			
 			Ship la=(Ship) laivaParkki.lookup("#"+Sid);
-			System.out.println(Sid);
+			Ship lala=(Ship) this.lookup("#"+Sid);
+			System.out.println("hee hee");
+			
+			//laivaparkista laudalle siirto
 			if(la!=null) {
-				System.out.println("Toimii");
+				System.out.println("nulli pulli");
+				
 				laivaParkki.getChildren().remove(la);
-				System.out.println(la.getBoundsInLocal());
+				
 				Bounds boundsInScene = la.localToScene(la.getBoundsInLocal());
 				Point2D location=new Point2D(e.getX(), e.getY());
 				la.setLayoutX(location.getX());
 				la.setLayoutY(location.getY());
-				//Double x =db.getX()+la.getLayoutX();
-//				Double y=e.getY();
+
 				
 				this.getChildren().add(la);
+				e.setDropCompleted(true);
 			}
+			
+			//laudan sisällä liikuttelu
+			else if(lala!=null){
+				System.out.println("laudan sisällä jejee");
+				
+				
+				Bounds boundsInScene = lala.localToScene(lala.getBoundsInLocal());
+				Point2D location=new Point2D(e.getX(), e.getY());
+				lala.relocate(location.getX(),location.getY());
+				//prest.setLayoutY(location.getY());
+
+				
+				//this.getChildren().add(prest);
+				e.setDropCompleted(true);
+			}
+			
+			
 			
 		});
 	
 	this.setOnDragOver(e->{
-		System.out.println("DragOver");
+		System.out.println("DragOveeerr");
 		e.acceptTransferModes(TransferMode.MOVE);
 		
 		e.consume();
@@ -97,9 +120,28 @@ public class Board extends Pane{
 		
 		if (event.getCode() == KeyCode.R) {
 			prest.setRotate(prest.getRotate()+90);
-			((Shape) prest).setFill(Color.GRAY);
+			
+		}
+		//voi liikutella ylös ja alas
+		if (event.getCode() == KeyCode.UP) {
+			prest.setLayoutY(prest.getLayoutY()-10);
+			
+		}
+		if (event.getCode() == KeyCode.DOWN) {
+			prest.setLayoutY(prest.getLayoutY()+10);
+			
+		}
+		if (event.getCode() == KeyCode.LEFT) {
+			prest.setLayoutX(prest.getLayoutX()-10);
+			
+		}
+		if (event.getCode() == KeyCode.RIGHT) {
+			prest.setLayoutX(prest.getLayoutX()+10);
+			
 		}
 	});
+	
+	
 	}
 	
 	public void setPrest(Ship laiva) {
