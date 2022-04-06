@@ -34,27 +34,36 @@ public class Board extends Pane{
 	Pane lauta;
 	private Ship prest;
 	@FXML
-	private Pane laivaParkki;
+	private StackPane laivaParkki;
 	
 	private int koko;
 	
 
 	
-	public Board(Pane laivaParkki, int koko) {
+	public Board(StackPane laivaParkki, int koko) {
 		super();
-		this.setPrefSize(400, 400);
+		//this.setPrefSize(400, 400);
+		this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+		
+		this.setScaleShape(true);
 		this.setStyle("-fx-background-color:white");
 		this.laivaParkki=laivaParkki;
 		this.koko=koko;
 		
-		double ruutKoko=400/5;
+		//asetetaan oiean kokoinen ruudukko
+		double ruutKoko=400/koko;
 		
-		for(int i=0; i<6; i++) {
+		for(int i=0; i<koko+1; i++) {
 			Line lineY=new Line(i*ruutKoko, 0, i*ruutKoko, 400);
 			Line lineX=new Line(0, i*ruutKoko, 400, i*ruutKoko);
 		this.getChildren().addAll(lineY,lineX);
 		}
 		
+		//asetetaan kasvamaan ikkunan kanssa
+		
+		
+		
+		//asetetaan drag and drop
 		this.setOnDragDropped(e->{
 			System.out.println("Dragdropped");
 			Dragboard db= e.getDragboard();
