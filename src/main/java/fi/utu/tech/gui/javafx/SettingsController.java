@@ -85,6 +85,7 @@ public class SettingsController {
 		lauta.setKoko(Integer.parseInt(koko));
 		System.out.println("Laudan koko: " + lauta.getKoko());
 		ruudut.setText(String.valueOf(lauta.getKoko()*lauta.getKoko()/2));
+		laudanKoko.setDisable(true);
 	}
 	
 	void alertWindow() {
