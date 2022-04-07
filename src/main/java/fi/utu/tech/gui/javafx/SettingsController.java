@@ -1,21 +1,20 @@
 package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class SettingsController {
@@ -86,22 +85,31 @@ public class SettingsController {
 		lauta.setKoko(Integer.parseInt(koko));
 		System.out.println("Laudan koko: " + lauta.getKoko());
 		ruudut.setText(String.valueOf(lauta.getKoko()*lauta.getKoko()/2));
+		laudanKoko.setDisable(true);
 	}
 	
-	
-	@FXML
-	void paivitaRuudut(MouseEvent event) {
-		System.out.println("klikattu");
-		@SuppressWarnings("unchecked")
-		Spinner<Integer> kohde = (Spinner<Integer>) event.getSource();
-		ValueFactory<Integer> factory = (ValueFactory<Integer>) kohde.getValueFactory();
+	void alertWindow() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Huomio!");
+		alert.setHeaderText("Pelin asetukset ovat puuttelliset");
+		alert.setContentText("Tarkista, että kaikki tietokentät ovat täytetty.");
+		alert.showAndWait();
 	}
+	
 	
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
-		//välitettävät tiedot
 		player1.setNimi(p1.getText());
 		player2.setNimi(p2.getText());
+		if (player1.getNimi().isEmpty() || player2.getNimi().isEmpty() || laudanKoko.getText().isEmpty()
+				|| (lta.getValue().equals(0) && tl.getValue().equals(0) && r.getValue().equals(0) && sv.getValue().equals(0) && h.getValue().equals(0))) {
+			alertWindow();
+		}else {
+		//välitettävät tiedot
+
+//		player1.setNimi(p1.getText());
+//		player2.setNimi(p2.getText());
+
 	
 	
 	//
@@ -128,7 +136,7 @@ public class SettingsController {
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-		
+		}
 		
 		
 
