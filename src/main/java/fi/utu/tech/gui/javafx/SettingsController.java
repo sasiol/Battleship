@@ -100,11 +100,9 @@ public class SettingsController {
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
 		//välitettävät tiedot
-//		player1.setNimi(p1.getText());
-//		player2.setNimi(p2.getText());
+		player1.setNimi(p1.getText());
+		player2.setNimi(p2.getText());
 	
-		System.out.println(lta.getValue());
-		System.out.println(r.getValue());
 	
 	//
 		
@@ -116,7 +114,9 @@ public class SettingsController {
 			//välitetään tiedot
 			setShipsController shipsController=loader.getController();
 			//lauta
-			shipsController.displayLauta(Integer.valueOf(koko));
+			shipsController.createLauta(Integer.valueOf(koko),p1.getText() );
+			shipsController.displayLauta();
+		
 			//laivat
 			shipsController.createLentotukialus(lta.getValue(),Integer.valueOf(koko) );
 			shipsController.createTaistelulaiva(tl.getValue(),Integer.valueOf(koko) );

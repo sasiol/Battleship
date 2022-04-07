@@ -3,33 +3,33 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.setShipsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.setShipsController">
    <center>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="356.0" prefWidth="408.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="356.0" prefWidth="408.0" BorderPane.alignment="CENTER">
          <right>
-            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="315.0" prefWidth="195.0" BorderPane.alignment="CENTER">
+            <VBox fx:id="psIkkuna" alignment="CENTER" prefHeight="315.0" prefWidth="195.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="nimi" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Pelaajan nimi?" />
-                  <StackPane fx:id="laivaParkki" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="272.0" VBox.vgrow="ALWAYS" />
+                  <Label fx:id="nimi" alignment="CENTER" />
+                  <StackPane fx:id="laivaParkki" prefHeight="272.0" prefWidth="144.0" />
                   <Button fx:id="nextscene" mnemonicParsing="false" onAction="#switchToBetweenScreen" text="Next scene" />
                   <Button fx:id="Ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready" />
                </children>
             </VBox>
          </right>
          <center>
-            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+            <VBox alignment="CENTER" prefHeight="315.0" prefWidth="123.0" BorderPane.alignment="CENTER" />
          </center>
          <left>
-            <VBox fx:id="psLauta" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+            <VBox fx:id="psLauta" alignment="CENTER" prefHeight="308.0" prefWidth="411.0" BorderPane.alignment="CENTER" />
          </left>
       </BorderPane>
    </center>
    <top>
-      <VBox fx:id="psIkkuna" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="85.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Place ships">
                <font>
