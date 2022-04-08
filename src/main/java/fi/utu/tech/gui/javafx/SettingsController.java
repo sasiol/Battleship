@@ -9,13 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class SettingsController {
@@ -23,6 +24,8 @@ public class SettingsController {
 	private Lauta lauta = new Lauta();
 	private Pelaaja player1 = new Pelaaja();
 	private Pelaaja player2 = new Pelaaja();
+	
+	private ArrayList<Integer> laivat=new ArrayList<>();
 		
 	@FXML
 	private MenuButton laudanKoko;
@@ -86,25 +89,42 @@ public class SettingsController {
 		lauta.setKoko(Integer.parseInt(koko));
 		System.out.println("Laudan koko: " + lauta.getKoko());
 		ruudut.setText(String.valueOf(lauta.getKoko()*lauta.getKoko()/2));
+		laudanKoko.setDisable(true);
 	}
 	
+	void alertWindow() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Huomio!");
+		alert.setHeaderText("Pelin asetukset ovat puuttelliset");
+		alert.setContentText("Tarkista, että kaikki tietokentät ovat täytetty.");
+		alert.showAndWait();
+	}
 	
-	@FXML
-	void paivitaRuudut(MouseEvent event) {
-		System.out.println("klikattu");
-		@SuppressWarnings("unchecked")
-		Spinner<Integer> kohde = (Spinner<Integer>) event.getSource();
-		ValueFactory<Integer> factory = (ValueFactory<Integer>) kohde.getValueFactory();
+	void makeList() {
+		laivat.add(lta.getValue());
+		laivat.add(tl.getValue( ));
+		laivat.add(r.getValue() );
+		laivat.add(sv.getValue());
+		laivat.add(h.getValue() );
+		System.out.println(laivat);
 	}
 	
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
+		makeList();
+		
+		player1.setNimi(p1.getText());
+		player2.setNimi(p2.getText());
+		if (player1.getNimi().isEmpty() || player2.getNimi().isEmpty() || laudanKoko.getText().isEmpty()
+				|| (lta.getValue().equals(0) && tl.getValue().equals(0) && r.getValue().equals(0) && sv.getValue().equals(0) && h.getValue().equals(0))) {
+			alertWindow();
+		}else {
 		//välitettävät tiedot
+
 //		player1.setNimi(p1.getText());
 //		player2.setNimi(p2.getText());
+
 	
-		System.out.println(lta.getValue());
-		System.out.println(r.getValue());
 	
 	//
 		
@@ -116,19 +136,19 @@ public class SettingsController {
 			//välitetään tiedot
 			setShipsController shipsController=loader.getController();
 			//lauta
-			shipsController.displayLauta(Integer.valueOf(koko));
+			shipsController.createLauta(Integer.valueOf(koko),p1.getText() );
+			shipsController.createLauta(Integer.valueOf(koko),p2.getText() );
+			shipsController.displayLauta(0);
+		
+			
 			//laivat
-			shipsController.createLentotukialus(lta.getValue(),Integer.valueOf(koko) );
-			shipsController.createTaistelulaiva(tl.getValue(),Integer.valueOf(koko) );
-			shipsController.createRisteilija(r.getValue(),Integer.valueOf(koko) );
-			shipsController.createSukellusvene(sv.getValue(),Integer.valueOf(koko) );
-			shipsController.createHavittaja(h.getValue(),Integer.valueOf(koko) );
+			shipsController.createShips(laivat, Integer.valueOf(koko) );
 			
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-		
+		}
 		
 		
 

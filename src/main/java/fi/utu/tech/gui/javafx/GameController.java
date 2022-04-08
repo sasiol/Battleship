@@ -1,6 +1,7 @@
 package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class GameController {
@@ -16,6 +18,26 @@ public class GameController {
 	private Button betweenButton;
 	@FXML
 	private Button turnButton;
+	
+	@FXML
+	private Pane peliRuutu;
+	
+	private ArrayList<Board> laudat=new ArrayList<>();
+	
+	
+	public void displayLauta(int i ) {
+		//find laudan pelaaja
+		Board lauta=laudat.get(i);
+		
+		System.out.println("Laudan laivat" +laudat.get(0).getChildren());
+	//	peliRuutu.getChildren().add(lauta);
+		//nimi.setText(lauta.getPelaaja());
+		//psIkkuna.getChildren().add(nimi);
+		
+	}
+	public void setLista(ArrayList<Board> laudat) {
+		this.laudat=laudat;
+	}
 
 	// siirry väliruutuun, sama kuin PlacementControllerissa
 	@FXML

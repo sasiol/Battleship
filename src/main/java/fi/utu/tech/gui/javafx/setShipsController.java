@@ -1,6 +1,7 @@
 package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.ColumnConstraints;
@@ -39,10 +41,16 @@ public class setShipsController{
 	private VBox psLauta;
 	@FXML 
 	private StackPane laivaParkki;
+	@FXML
+	private Label nimi;
 	
 	private Ship laiva;
 	
 	private Board lauta;
+	
+	private ArrayList<Board> laudat=new ArrayList<>();
+	private ArrayList<Integer> laivat=new ArrayList<>();
+	private Integer lkoko;
 	
 //	public void initialize() {
 //		//displayLauta(1);
@@ -50,12 +58,21 @@ public class setShipsController{
 //	}
 	
 	
-	
+
+	public void createShips(ArrayList<Integer> laivat, int lkoko) {
+		this.laivat=laivat;
+		this.lkoko=lkoko;
+		createLentotukialus(laivat.get(0),lkoko);
+		createTaistelulaiva(laivat.get(1),lkoko );
+		createRisteilija(laivat.get(2),lkoko );
+		createSukellusvene(laivat.get(3), lkoko );
+		createHavittaja(laivat.get(4), lkoko);
+	}
 //	//saavat parametreina kuinka monta pitää tehdä ja koon
 	public void createLentotukialus(int maara, int lkoko){
 		for(int i=0; i<maara;i++) {
 			double ruutu=400/lkoko;
-		Ship laiva=new Ship(lauta);
+		Ship laiva=new Ship(5);
 		laiva.setWidth(ruutu);
 		laiva.setHeight(5*ruutu);
 		
@@ -70,7 +87,7 @@ public class setShipsController{
 public void createTaistelulaiva(int maara, int lkoko){
 	for(int i=0; i<maara;i++) {
 		double ruutu=400/lkoko;
-	Ship laiva=new Ship(lauta);
+	Ship laiva=new Ship(4);
 	laiva.setWidth(ruutu);
 	laiva.setHeight(4*ruutu);
 	laivaParkki.setAlignment(laiva, Pos.TOP_CENTER);
@@ -81,7 +98,7 @@ public void createTaistelulaiva(int maara, int lkoko){
 public void createRisteilija(int maara, int lkoko){
 	for(int i=0; i<maara;i++) {
 		double ruutu=400/lkoko;
-	Ship laiva=new Ship(lauta);
+	Ship laiva=new Ship(3);
 	laiva.setWidth(ruutu);
 	laiva.setHeight(3*ruutu);
 	laivaParkki.setAlignment(laiva, Pos.TOP_RIGHT);
@@ -92,7 +109,7 @@ public void createRisteilija(int maara, int lkoko){
 public void createSukellusvene(int maara, int lkoko){
 	for(int i=0; i<maara;i++) {
 		double ruutu=400/lkoko;
-	Ship laiva=new Ship(lauta);
+	Ship laiva=new Ship(3);
 	laiva.setWidth(ruutu);
 	laiva.setHeight(3*ruutu);
 	laivaParkki.setAlignment(laiva, Pos.BOTTOM_RIGHT);
@@ -104,7 +121,7 @@ public void createSukellusvene(int maara, int lkoko){
 public void createHavittaja(int maara, int lkoko){
 	for(int i=0; i<maara;i++) {
 		double ruutu=400/lkoko;
-	Ship laiva=new Ship(lauta);
+	Ship laiva=new Ship(0);
 	laiva.setWidth(ruutu);
 	laiva.setHeight(2*ruutu);
 	laivaParkki.setAlignment(laiva, Pos.BOTTOM_CENTER);
@@ -121,31 +138,60 @@ public void createHavittaja(int maara, int lkoko){
 //	laivaParkki.getChildren().addAll(laiva);
 //	
 //}
-	public void displayLauta(int koko) {
-		lauta=new Board(laivaParkki, koko);
-		
-		
-		
 
+public void createLauta(int koko, String pelaaja) {
+	Board lauta=new Board(laivaParkki, koko, pelaaja);
+	
+	laudat.add(lauta);
+	
+	//psLauta.getChildren().add(lauta);
+	
+}
+	public void displayLauta(int i ) {
+		//find laudan pelaaja
+		Board lauta=laudat.get(i);
 		psLauta.getChildren().add(lauta);
+		nimi.setText(lauta.getPelaaja());
+		//psIkkuna.getChildren().add(nimi);
 		
 	}
+
+	
 	@FXML
-	public void switchToBetweenScreen(ActionEvent event) throws IOException{
-		Parent root = FXMLLoader.load(getClass().getResource("betweenScreen.fxml"));
+	public void nextBoard(ActionEvent event) throws IOException {
+		//if (arePlaced == true) {
+	//		SceneController.switchToBoardCreation(event);
+		System.out.println("Laudan laivat" +laudat.get(0).getChildren());
+		psLauta.getChildren().clear();
+		laivaParkki.getChildren().clear();
+		createShips(laivat,lkoko);
+		displayLauta(1);
+		//} 
+	}
+	
+	@FXML
+	public void switchToNextScene(ActionEvent event) throws IOException{
+		
+		
+		
+		
+		FXMLLoader loader=new FXMLLoader(getClass().getResource("betweenScreen.fxml"));
+		Parent root = loader.load();
+		
+		//välitetään tiedot
+		GameController gameController=loader.getController();
+		//lauta
+		
+		gameController.setLista(laudat);
+		gameController.displayLauta(0);
+	
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
 
-	@FXML
-	public void nextBoard(ActionEvent event) throws IOException {
-		if (arePlaced == true) {
-	//		SceneController.switchToBoardCreation(event);
-			
-		} 
-	}
+
 
 	public Pane deleteShip(Ship ship) {
 		laivaParkki.getChildren().remove(ship);
