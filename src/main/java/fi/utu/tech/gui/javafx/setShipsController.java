@@ -49,6 +49,8 @@ public class setShipsController{
 	private Board lauta;
 	
 	private ArrayList<Board> laudat=new ArrayList<>();
+	private ArrayList<Integer> laivat=new ArrayList<>();
+	private Integer lkoko;
 	
 //	public void initialize() {
 //		//displayLauta(1);
@@ -57,7 +59,15 @@ public class setShipsController{
 	
 	
 
-	
+	public void createShips(ArrayList<Integer> laivat, int lkoko) {
+		this.laivat=laivat;
+		this.lkoko=lkoko;
+		createLentotukialus(laivat.get(0),lkoko);
+		createTaistelulaiva(laivat.get(1),lkoko );
+		createRisteilija(laivat.get(2),lkoko );
+		createSukellusvene(laivat.get(3), lkoko );
+		createHavittaja(laivat.get(4), lkoko);
+	}
 //	//saavat parametreina kuinka monta pitää tehdä ja koon
 	public void createLentotukialus(int maara, int lkoko){
 		for(int i=0; i<maara;i++) {
@@ -137,32 +147,51 @@ public void createLauta(int koko, String pelaaja) {
 	//psLauta.getChildren().add(lauta);
 	
 }
-	public void displayLauta( ) {
+	public void displayLauta(int i ) {
 		//find laudan pelaaja
-		Board lauta=laudat.get(0);
+		Board lauta=laudat.get(i);
 		psLauta.getChildren().add(lauta);
 		nimi.setText(lauta.getPelaaja());
 		//psIkkuna.getChildren().add(nimi);
 		
 	}
-	
+
 	
 	@FXML
-	public void switchToBetweenScreen(ActionEvent event) throws IOException{
-		Parent root = FXMLLoader.load(getClass().getResource("betweenScreen.fxml"));
+	public void nextBoard(ActionEvent event) throws IOException {
+		//if (arePlaced == true) {
+	//		SceneController.switchToBoardCreation(event);
+		System.out.println("Laudan laivat" +laudat.get(0).getChildren());
+		psLauta.getChildren().clear();
+		laivaParkki.getChildren().clear();
+		createShips(laivat,lkoko);
+		displayLauta(1);
+		//} 
+	}
+	
+	@FXML
+	public void switchToNextScene(ActionEvent event) throws IOException{
+		
+		
+		
+		
+		FXMLLoader loader=new FXMLLoader(getClass().getResource("betweenScreen.fxml"));
+		Parent root = loader.load();
+		
+		//välitetään tiedot
+		GameController gameController=loader.getController();
+		//lauta
+		
+		gameController.setLista(laudat);
+		gameController.displayLauta(0);
+	
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
 	}
 
-	@FXML
-	public void nextBoard(ActionEvent event) throws IOException {
-		if (arePlaced == true) {
-	//		SceneController.switchToBoardCreation(event);
-			
-		} 
-	}
+
 
 	public Pane deleteShip(Ship ship) {
 		laivaParkki.getChildren().remove(ship);

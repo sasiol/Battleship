@@ -1,6 +1,8 @@
 package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +24,8 @@ public class SettingsController {
 	private Lauta lauta = new Lauta();
 	private Pelaaja player1 = new Pelaaja();
 	private Pelaaja player2 = new Pelaaja();
+	
+	private ArrayList<Integer> laivat=new ArrayList<>();
 		
 	@FXML
 	private MenuButton laudanKoko;
@@ -96,9 +100,19 @@ public class SettingsController {
 		alert.showAndWait();
 	}
 	
+	void makeList() {
+		laivat.add(lta.getValue());
+		laivat.add(tl.getValue( ));
+		laivat.add(r.getValue() );
+		laivat.add(sv.getValue());
+		laivat.add(h.getValue() );
+		System.out.println(laivat);
+	}
 	
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
+		makeList();
+		
 		player1.setNimi(p1.getText());
 		player2.setNimi(p2.getText());
 		if (player1.getNimi().isEmpty() || player2.getNimi().isEmpty() || laudanKoko.getText().isEmpty()
@@ -123,14 +137,12 @@ public class SettingsController {
 			setShipsController shipsController=loader.getController();
 			//lauta
 			shipsController.createLauta(Integer.valueOf(koko),p1.getText() );
-			shipsController.displayLauta();
+			shipsController.createLauta(Integer.valueOf(koko),p2.getText() );
+			shipsController.displayLauta(0);
 		
+			
 			//laivat
-			shipsController.createLentotukialus(lta.getValue(),Integer.valueOf(koko) );
-			shipsController.createTaistelulaiva(tl.getValue(),Integer.valueOf(koko) );
-			shipsController.createRisteilija(r.getValue(),Integer.valueOf(koko) );
-			shipsController.createSukellusvene(sv.getValue(),Integer.valueOf(koko) );
-			shipsController.createHavittaja(h.getValue(),Integer.valueOf(koko) );
+			shipsController.createShips(laivat, Integer.valueOf(koko) );
 			
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);

@@ -159,6 +159,11 @@ public class Board extends Pane{
 	
 	}
 	
+	
+	
+	public ArrayList<Ship> getShips(){
+		return  laivat;
+	}
 	public String getPelaaja() {
 		return pelaaja;
 	}
