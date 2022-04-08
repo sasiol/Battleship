@@ -7,87 +7,63 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.SettingsController">
-   <children>
-      <HBox maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="657.0" VBox.vgrow="ALWAYS">
+<BorderPane xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.SettingsController">
+   <center>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="819.0">
          <children>
-            <Button alignment="TOP_RIGHT" mnemonicParsing="false" text="Lopeta peli" textAlignment="CENTER" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </HBox.margin>
-            </Button>
-            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Pelin asetukset" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </HBox.margin>
-            </Label>
-            <Button fx:id="valmis" mnemonicParsing="false" onAction="#valmisKlikattu" text="Valmis" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
-      <HBox prefHeight="452.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
-         <children>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <HBox prefHeight="452.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Pelaaja 1:" />
-                  <TextField fx:id="p1">
-                     <VBox.margin>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Label text="Pelaaja 2:" />
-                  <TextField fx:id="p2">
-                     <VBox.margin>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                     </VBox.margin>
-                  </TextField>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="432.0" prefWidth="202.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label text="Pelilaudan rivimäärä" />
-                  <MenuButton fx:id="laudanKoko" maxWidth="1.7976931348623157E308" mnemonicParsing="false">
-                    <items>
-                      <MenuItem fx:id="item10" mnemonicParsing="false" onAction="#laudanKokoValittu" text="10" />
-                      <MenuItem fx:id="item9" mnemonicParsing="false" onAction="#laudanKokoValittu" text="9" />
-                        <MenuItem fx:id="item8" mnemonicParsing="false" onAction="#laudanKokoValittu" text="8" />
-                        <MenuItem fx:id="item7" mnemonicParsing="false" onAction="#laudanKokoValittu" text="7" />
-                        <MenuItem fx:id="item6" mnemonicParsing="false" onAction="#laudanKokoValittu" text="6" />
-                        <MenuItem fx:id="item5" mnemonicParsing="false" onAction="#laudanKokoValittu" text="5" />
-                    </items>
-                     <VBox.margin>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                     </VBox.margin>
-                  </MenuButton>
-               </children>
-            </VBox>
-            <VBox>
-               <children>
-                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Alukset" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label text="Ruutuja käytettävissä:">
-                     <VBox.margin>
-                        <Insets left="12.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="ruudut">
-                     <VBox.margin>
-                        <Insets left="12.0" />
-                     </VBox.margin>
-                  </Label>
-                  <HBox>
+                  <VBox alignment="CENTER" prefHeight="531.0" prefWidth="189.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="204.0" HBox.hgrow="ALWAYS">
+                        <Label text="Pelaaja 1:" />
+                        <TextField fx:id="p1">
+                           <VBox.margin>
+                              <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Pelaaja 2:" />
+                        <TextField fx:id="p2">
+                           <VBox.margin>
+                              <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Pelilaudan rivimäärä" />
+                        <MenuButton fx:id="laudanKoko" maxWidth="1.7976931348623157E308" mnemonicParsing="false">
+                          <items>
+                            <MenuItem fx:id="item10" mnemonicParsing="false" onAction="#laudanKokoValittu" text="10" />
+                            <MenuItem fx:id="item9" mnemonicParsing="false" onAction="#laudanKokoValittu" text="9" />
+                              <MenuItem fx:id="item8" mnemonicParsing="false" onAction="#laudanKokoValittu" text="8" />
+                              <MenuItem fx:id="item7" mnemonicParsing="false" onAction="#laudanKokoValittu" text="7" />
+                              <MenuItem fx:id="item6" mnemonicParsing="false" onAction="#laudanKokoValittu" text="6" />
+                              <MenuItem fx:id="item5" mnemonicParsing="false" onAction="#laudanKokoValittu" text="5" />
+                          </items>
+                           <VBox.margin>
+                              <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                           </VBox.margin>
+                        </MenuButton>
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="531.0" prefWidth="140.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button alignment="TOP_RIGHT" mnemonicParsing="false" text="Lopeta peli" textAlignment="CENTER" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="531.0" prefWidth="333.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="204.0">
                            <children>
+                              <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Alukset" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </VBox.margin>
+                              </Label>
                               <Label alignment="CENTER_RIGHT" text="Lentotukialus">
                                  <VBox.margin>
                                     <Insets />
@@ -113,21 +89,17 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <Spinner fx:id="r" onMouseClicked="#paivitaRuudut">
+                              <Spinner fx:id="sv" onMouseClicked="#paivitaRuudut">
                                  <VBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </VBox.margin>
                               </Spinner>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                           <children>
                               <Label text="Sukellusvene">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <Spinner fx:id="sv" onMouseClicked="#paivitaRuudut">
+                              <Spinner fx:id="r" onMouseClicked="#paivitaRuudut">
                                  <VBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </VBox.margin>
@@ -142,13 +114,30 @@
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </VBox.margin>
                               </Spinner>
+                              <Label text="Ruutuja käytettävissä:">
+                                 <VBox.margin>
+                                    <Insets left="12.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="ruudut" />
+                              <Button fx:id="valmis" mnemonicParsing="false" onAction="#valmisKlikattu" text="Valmis">
+                                 <VBox.margin>
+                                    <Insets top="30.0" />
+                                 </VBox.margin></Button>
                            </children>
                         </VBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="819.0" text="Pelin asetukset" />
          </children>
       </HBox>
-   </children>
-</VBox>
+   </top>
+</BorderPane>
