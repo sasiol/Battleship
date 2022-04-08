@@ -89,10 +89,10 @@ public class SettingsController {
 	}
 	
 	void alertWindow() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Huomio!");
-		alert.setHeaderText("Pelin asetukset ovat puuttelliset");
-		alert.setContentText("Tarkista, että kaikki tietokentät ovat täytetty.");
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Attention!");
+		alert.setHeaderText("Game settings are incomplete.");
+		alert.setContentText("Please check that you have filled all necessary information.");
 		alert.showAndWait();
 	}
 	
