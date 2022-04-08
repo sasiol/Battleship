@@ -15,8 +15,8 @@
                <children>
                   <Label fx:id="nimi" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Pelaajan nimi?" />
                   <StackPane fx:id="laivaParkki" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="272.0" VBox.vgrow="ALWAYS" />
-                  <Button fx:id="Ready" mnemonicParsing="false" onAction="#nextBoard" text="Next scene" />
-                  <Button fx:id="nextScene" mnemonicParsing="false" onAction="#switchToNextScene" prefHeight="24.0" prefWidth="109.0" text="Ready" />
+                  <Button fx:id="nextScene" mnemonicParsing="false" onAction="#switchToNextScene" text="Next scene" />
+                  <Button fx:id="ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready" />
                </children>
             </VBox>
          </right>
