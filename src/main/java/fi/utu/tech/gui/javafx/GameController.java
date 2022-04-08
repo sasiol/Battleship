@@ -29,7 +29,7 @@ public class GameController {
 		Board lauta=laudat.get(i);
 		
 		System.out.println("Laudan laivat" +laudat.get(0).getChildren());
-	//	peliRuutu.getChildren().add(lauta);
+		//peliRuutu.getChildren().add(lauta);
 		//nimi.setText(lauta.getPelaaja());
 		//psIkkuna.getChildren().add(nimi);
 		

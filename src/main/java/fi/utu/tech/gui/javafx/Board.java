@@ -26,6 +26,7 @@ public class Board extends Pane{
 	private String pelaaja;
 	private ArrayList<Ship> laivat=new ArrayList<>();
 	
+	
 
 	
 	public Board(StackPane laivaParkki, int koko, String pelaaja) {
