@@ -14,8 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class GameController {
-	@FXML
-	private Button betweenButton;
+	
 	@FXML
 	private Button turnButton;
 	
@@ -49,15 +48,6 @@ public class GameController {
 		stage.show();
 	}
 
-	// siirry pelivuoro-stageen
-	@FXML
-	public void switchToTurnScreen(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("turn.fxml"));
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
 
 	// Siirry voittoruutuun
 	@FXML
