@@ -7,11 +7,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Button;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
@@ -22,9 +24,13 @@ public class Board extends Pane{
 	@FXML
 	private StackPane laivaParkki;
 	
+	private GridPane salaus=new GridPane();
+	
 	private int koko;
 	private String pelaaja;
 	private ArrayList<Ship> laivat=new ArrayList<>();
+	private ArrayList<Button> nappulat=new ArrayList<>();
+	private int hp;
 	
 	
 
@@ -43,10 +49,36 @@ public class Board extends Pane{
 		double ruutKoko=400/koko;
 		
 		for(int i=0; i<koko+1; i++) {
+			//luodaan laudan ruudukko
 			Line lineY=new Line(i*ruutKoko, 0, i*ruutKoko, 400);
 			Line lineX=new Line(0, i*ruutKoko, 400, i*ruutKoko);
 		this.getChildren().addAll(lineY,lineX);
 		}
+		
+		//luodaan saman kokoinen GridPane täynnä nappuloita
+		//tämä tulee pelin alkaessa estämään laivojen näkemisen
+		for(int i=0; i<koko; i++) {
+			for(int j=0;j<koko;j++) {
+				Button b=new Button("?");
+				nappulat.add(b);
+				b.setOnAction( event->{
+					b.setVisible(false);
+					salaus.setPickOnBounds(false);
+//					if(b.isVisible()==false) {
+//						System.out.println("managed false");
+//					b.setDisable();
+//					}
+//					else{
+//						b.setVisible(false);
+//					}
+					});
+			
+				b.setPrefSize(ruutKoko, ruutKoko);
+				b.setStyle("-fx-background-color:blue");
+				salaus.add(b, i, j);
+				
+			}}
+		
 		
 		
 		
@@ -56,7 +88,8 @@ public class Board extends Pane{
 //		        prest =  (Ship) e.getSource();
 //		        
 //		    });
-			
+			//käydään läpi laivojen hpt
+		
 		
 	
 		
@@ -82,6 +115,7 @@ public class Board extends Pane{
 
 				la.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 				laivat.add(la);
+				this.setHP(la.getHP());
 				prest=la;
 				this.getChildren().add(la);
 				e.setDropCompleted(true);
@@ -140,7 +174,14 @@ public class Board extends Pane{
 	
 	}
 	
-	
+//	public void suojausClickable(boolean tf) {
+//		salaus.setPickOnBounds(true);
+//		for(Button n:nappulat) {
+//			n.setClickable(false);
+//			
+//		}
+//		System.out.println("nappulat on "+nappulat.get(2).isDisabled());
+//	}
 	
 	public ArrayList<Ship> getShips(){
 		return  laivat;
@@ -159,6 +200,22 @@ public class Board extends Pane{
 	    }
 	  }
 	 };
+
+public void setHP(int h) {
+	this.hp=hp+h;
+}
+public void miinustaHP(){
+	this.hp--;
+	System.out.println("HP on"+this.hp);
+	if(hp==0) {
+		System.out.println("VOITIIIT!!!");
+	}
+}
+
+	public GridPane getSalaus() {
+		// TODO Auto-generated method stub
+		return salaus;
+	}
 	
 	
 	}

@@ -44,15 +44,26 @@ public class Ship extends Rectangle{
 
 		this.setOnMousePressed(e -> {
 			((Node) e.getSource()).requestFocus();
-//			startX = e.getX();
-//			startY = e.getY();
-
-
-		});
+			System.out.println("laivan parent"+this.getParent().getParent().getId());
+			if(this.getParent().getParent().getId().contentEquals("peliRuutu")) {
+				System.out.println("hp ennen"+hp);
+				hp=hp-1;
+				((Board) this.getParent()).miinustaHP();
+//				((Board) this.getParent()).setClickable(true);
+				
+			}
+			else {
+				//nothing
+			}
+////			startX = e.getX();
+////			startY = e.getY();
+//
+//
+//		});
 //		this.setOnMouseDragged(e->{
 //			this.setLayoutX(e.getSceneX() - startX);
 //			this.setLayoutY(e.getSceneY() - startY);
-//		});
+		});
 
 		this.setOnDragDetected(e -> {
 			//System.out.println("drag detetecyted");
@@ -71,5 +82,10 @@ public class Ship extends Rectangle{
 		});
 	//}
 }
+
+	public int getHP() {
+		
+		return hp;
+	}
 
 }

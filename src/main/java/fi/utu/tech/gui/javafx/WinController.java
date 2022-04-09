@@ -2,6 +2,7 @@ package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
 
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,9 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class WinController {
+	@FXML
+	private Label winner;
 
 	// palaa menu-stageen
 	@FXML
@@ -21,6 +25,10 @@ public class WinController {
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+	}
+	public void setWinner(String nimi) {
+		winner.setText("Player"+nimi+"Wins");
+		
 	}
 
 	// sulje sovellus, sama kuin MenuControllerissa

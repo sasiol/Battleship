@@ -66,6 +66,7 @@ public class setShipsController {
 			Ship laiva = new Ship(5);
 			laiva.setWidth(ruutu);
 			laiva.setHeight(5 * ruutu);
+		
 
 			Bounds boundsInScene = laiva.localToScene(laiva.getBoundsInLocal());
 			System.out.println(boundsInScene);
@@ -136,8 +137,10 @@ public class setShipsController {
 
 	public void createLauta(int koko, String pelaaja) {
 		Board lauta = new Board(laivaParkki, koko, pelaaja);
+		
 
 		laudat.add(lauta);
+		
 
 		// psLauta.getChildren().add(lauta);
 
@@ -171,11 +174,12 @@ public class setShipsController {
 		Parent root = loader.load();
 
 		// välitetään tiedot EI TOIMI
-//		GameController gameController = loader.getController();
+		BetweenController betweeController = loader.getController();
 		// lauta
-//
-//		gameController.setLista(laudat);
-//		gameController.displayLauta(0);
+
+		betweeController.setLista(laudat);
+		betweeController.displayLauta(0);
+		
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);

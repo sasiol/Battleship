@@ -5,18 +5,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.layout.StackPane?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.GameController">
    <right>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="pelaajaRuutu" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Pelaajan nimi" />
+            <Label fx:id="nimi" />
             <Button fx:id="turnButton" alignment="CENTER" mnemonicParsing="false" onAction="#switchToBetweenScreen" text="Turn over" textAlignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#switchToWinScreen" prefHeight="24.0" prefWidth="84.0" text="Joku voitti" />
          </children>
       </VBox>
    </right>
    <center>
-      <Pane fx:id="peliRuutu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <StackPane fx:id="peliRuutu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
