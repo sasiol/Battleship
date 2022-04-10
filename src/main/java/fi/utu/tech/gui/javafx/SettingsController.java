@@ -15,6 +15,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class SettingsController {
@@ -25,6 +26,8 @@ public class SettingsController {
 
 	@FXML
 	private MenuButton laudanKoko;
+	@FXML
+	private BorderPane settingsPane;
 
 	@FXML
 	private MenuItem item10;
@@ -121,6 +124,7 @@ public class SettingsController {
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("boardStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 

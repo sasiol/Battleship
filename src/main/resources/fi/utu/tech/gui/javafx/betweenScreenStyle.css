@@ -1,8 +1,5 @@
-#winpane{
-    -fx-background-image: url("wspic.jpg");
-    -fx-background-color: #171d26;
-    -fx-background-repeat: stretch;   
-    -fx-background-position: center center;
+#betweenPane{
+    -fx-background-color: #171d26;  
     -fx-text-fill: #FFFFFF;
 }
 

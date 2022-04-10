@@ -33,7 +33,10 @@ public class MenuController {
 	public void switchToSettings(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("settings.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("settingsStyle.css").toExternalForm());
+		
 		stage.setScene(scene);
 		stage.show();
 	}

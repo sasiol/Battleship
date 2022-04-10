@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -21,6 +22,8 @@ public class setShipsController {
 
 	// placeholder, joskus start game nappula, joka tulee kun molemmat laudat on
 	// asetettu ja peli voi alkaa
+	@FXML
+	private BorderPane boardPane;
 	@FXML
 	private Button nextscene;
 	@FXML
@@ -127,6 +130,7 @@ public class setShipsController {
 		Parent root = FXMLLoader.load(getClass().getResource("betweenScreen.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("betweenStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}

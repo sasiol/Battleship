@@ -19,8 +19,9 @@ public class MainApp extends Application {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().addAll(this.getClass().getResource("menustyle.css").toExternalForm());
 
-			stage.setTitle("Battleship menu");
+			stage.setTitle("Battleship");
 			stage.setScene(scene);
+			stage.setResizable(false);
 			stage.show();
 
 		} catch (IOException e) {

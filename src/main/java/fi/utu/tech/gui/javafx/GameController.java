@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class GameController {
@@ -16,6 +17,8 @@ public class GameController {
 	private Button betweenButton;
 	@FXML
 	private Button turnButton;
+	@FXML
+	private BorderPane turnPane;
 
 	// siirry väliruutuun, sama kuin PlacementControllerissa
 	@FXML
@@ -23,6 +26,7 @@ public class GameController {
 		Parent root = FXMLLoader.load(getClass().getResource("betweenScreen.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("betweenStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -33,6 +37,7 @@ public class GameController {
 		Parent root = FXMLLoader.load(getClass().getResource("turn.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("turnStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
