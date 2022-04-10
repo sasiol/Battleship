@@ -31,6 +31,9 @@
          <font>
             <Font size="38.0" />
          </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
       </Label>
    </top>
 </BorderPane>
