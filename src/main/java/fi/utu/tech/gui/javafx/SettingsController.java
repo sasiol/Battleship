@@ -21,7 +21,6 @@ import javafx.stage.Stage;
 
 public class SettingsController {
 
-	private Lauta lauta = new Lauta();
 	private Pelaaja player1 = new Pelaaja();
 	private Pelaaja player2 = new Pelaaja();
 
@@ -85,9 +84,9 @@ public class SettingsController {
 	void laudanKokoValittu(ActionEvent event) {
 		koko = ((MenuItem) event.getSource()).getText();
 		laudanKoko.setText(koko + "x" + koko);
-		lauta.setKoko(Integer.parseInt(koko));
-		System.out.println("Laudan koko: " + lauta.getKoko());
-		ruudut.setText(String.valueOf(lauta.getKoko() * lauta.getKoko() / 2));
+		System.out.println("Nyt on hyvä koko :)");
+		ruudut.setText(String.valueOf(Integer.parseInt(koko)*Integer.parseInt(koko)/ 2));
+
 		laudanKoko.setDisable(true);
 	}
 
@@ -132,6 +131,7 @@ public class SettingsController {
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+			System.out.println("halleluja");
 		}
 
 	}
