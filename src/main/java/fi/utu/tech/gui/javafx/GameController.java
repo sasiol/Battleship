@@ -3,6 +3,7 @@ package fi.utu.tech.gui.javafx;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,8 @@ public class GameController {
 	private Button turnButton;
 	@FXML
 	private BorderPane turnPane;
+	@FXML
+	private Button turnExit;
 
 	@FXML
 	private Pane peliRuutu;
@@ -47,7 +50,7 @@ public class GameController {
 		Parent root = FXMLLoader.load(getClass().getResource("betweenScreen.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
-		scene.getStylesheets().addAll(this.getClass().getResource("betweenStyle.css").toExternalForm());
+		scene.getStylesheets().addAll(this.getClass().getResource("betweenScreenStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -61,6 +64,12 @@ public class GameController {
 		scene.getStylesheets().addAll(this.getClass().getResource("winscreenstyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	@FXML
+	protected void handleExitButton(ActionEvent event) {
+		System.out.println("Closing app.");
+		Platform.exit();
 	}
 
 }

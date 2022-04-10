@@ -2,7 +2,6 @@ package fi.utu.tech.gui.javafx;
 
 import java.util.ArrayList;
 
-import java.util.ArrayList;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

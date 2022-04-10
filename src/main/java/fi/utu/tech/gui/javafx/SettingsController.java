@@ -3,6 +3,7 @@ package fi.utu.tech.gui.javafx;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,8 @@ public class SettingsController {
 	private MenuButton laudanKoko;
 	@FXML
 	private BorderPane settingsPane;
+	@FXML
+	private Button settingsExit;
 
 	@FXML
 	private MenuItem item10;
@@ -101,6 +104,12 @@ public class SettingsController {
 		alert.setContentText("Tarkista, että kaikki tietokentät ovat täytetty.");
 		alert.showAndWait();
 	}
+	
+	@FXML
+	protected void handleExitButton(ActionEvent event) {
+		System.out.println("Closing app.");
+		Platform.exit();
+	}
 
 	void makeList() {
 		laivat.add(lta.getValue());
@@ -144,7 +153,7 @@ public class SettingsController {
 
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
-//			scene.getStylesheets().addAll(this.getClass().getResource("boardStyle.css").toExternalForm());
+			scene.getStylesheets().addAll(this.getClass().getResource("boardStyle.css").toExternalForm());
 			stage.setScene(scene);
 			stage.show();
 		}

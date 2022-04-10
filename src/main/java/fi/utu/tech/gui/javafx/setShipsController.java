@@ -2,6 +2,8 @@ package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +39,9 @@ public class setShipsController {
 	private StackPane laivaParkki;
 	@FXML
 	private Label nimi;
+	@FXML 
+	private Button boardExit;
+	
 	private Ship laiva;
 
 	private Board lauta;
@@ -178,7 +183,7 @@ public class setShipsController {
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
-		scene.getStylesheets().addAll(this.getClass().getResource("betweenStyle.css").toExternalForm());
+		scene.getStylesheets().addAll(this.getClass().getResource("betweenScreenStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -190,5 +195,11 @@ public class setShipsController {
 
 	public void setLaivaParkki(StackPane laivaParkki) {
 		this.laivaParkki = laivaParkki;
+	}
+	
+	@FXML
+	protected void handleExitButton(ActionEvent event) {
+		System.out.println("Closing app.");
+		Platform.exit();
 	}
 }
