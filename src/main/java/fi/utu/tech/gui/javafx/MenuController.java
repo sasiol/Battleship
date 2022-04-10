@@ -2,6 +2,7 @@ package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
 
+import fi.utu.tech.gui.javafx.ExitDialog;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +10,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -45,7 +50,8 @@ public class MenuController {
 	@FXML
 	protected void handleExitButton(ActionEvent event) {
 		System.out.println("Closing app.");
-		Platform.exit();
+		ExitDialog exitDialog = new ExitDialog();
+		exitDialog.handleExit();
 	}
 
 }

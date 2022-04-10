@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -99,16 +100,24 @@ public class SettingsController {
 
 	void alertWindow() {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Huomio!");
+		alert.setTitle("Attention!");
 		alert.setHeaderText("Pelin asetukset ovat puuttelliset");
 		alert.setContentText("Tarkista, että kaikki tietokentät ovat täytetty.");
+		
+		
+		DialogPane dialogPane = alert.getDialogPane();
+		dialogPane.getStylesheets().add(
+		   getClass().getResource("dialog.css").toExternalForm());
+		dialogPane.getStyleClass().add("myDialog");
+		
 		alert.showAndWait();
 	}
 	
 	@FXML
 	protected void handleExitButton(ActionEvent event) {
 		System.out.println("Closing app.");
-		Platform.exit();
+		ExitDialog exitDialog = new ExitDialog();
+		exitDialog.handleExit();
 	}
 
 	void makeList() {
