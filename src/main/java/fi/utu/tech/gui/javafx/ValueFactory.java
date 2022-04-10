@@ -20,6 +20,8 @@ public class ValueFactory<T> extends SpinnerValueFactory<Integer>{
 		this.setValue(0);
 	}
 
+	
+	// aluksen määrää vähennettäessä tarkistetaan, ettei arvo ole jo 0
 	@Override
 	public void decrement(int steps) {
 		
@@ -33,6 +35,8 @@ public class ValueFactory<T> extends SpinnerValueFactory<Integer>{
 		}
 	}
 
+	// aluksen määrää lisätessä tarkistetaan, että ruutuja on tarpeeksi käytettävissä
+	// eikä alusten määrä ylitä sallittua
 	@Override
 	public void increment(int steps) {
 		int ruutuMaara = Integer.parseInt(this.ruudut.getText());
