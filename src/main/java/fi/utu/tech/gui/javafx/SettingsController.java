@@ -1,6 +1,7 @@
 package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,10 +25,8 @@ public class SettingsController {
 	private Lauta lauta = new Lauta();
 	private Pelaaja player1 = new Pelaaja();
 	private Pelaaja player2 = new Pelaaja();
-	
-	private ArrayList<Integer> laivat=new ArrayList<>();
-	
-	private ArrayList<Integer> laivat=new ArrayList<>();
+
+	private ArrayList<Integer> laivat = new ArrayList<>();
 
 	@FXML
 	private MenuButton laudanKoko;
@@ -94,15 +93,7 @@ public class SettingsController {
 		ruudut.setText(String.valueOf(lauta.getKoko() * lauta.getKoko() / 2));
 		laudanKoko.setDisable(true);
 	}
-	void alertWindow() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Huomio!");
-		alert.setHeaderText("Pelin asetukset ovat puuttelliset");
-		alert.setContentText("Tarkista, että kaikki tietokentät ovat täytetty.");
-		alert.showAndWait();
-		laudanKoko.setDisable(true);
-	}
-	
+
 	void alertWindow() {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Huomio!");
@@ -110,61 +101,53 @@ public class SettingsController {
 		alert.setContentText("Tarkista, että kaikki tietokentät ovat täytetty.");
 		alert.showAndWait();
 	}
+
 	void makeList() {
 		laivat.add(lta.getValue());
-		laivat.add(tl.getValue( ));
-		laivat.add(r.getValue() );
+		laivat.add(tl.getValue());
+		laivat.add(r.getValue());
 		laivat.add(sv.getValue());
-		laivat.add(h.getValue() );
+		laivat.add(h.getValue());
 		System.out.println(laivat);
 	}
 
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
 		makeList();
-		
-		player1.setNimi(p1.getText());
-		player2.setNimi(p2.getText());
-		if (player1.getNimi().isEmpty() || player2.getNimi().isEmpty() || laudanKoko.getText().isEmpty()
-				|| (lta.getValue().equals(0) && tl.getValue().equals(0) && r.getValue().equals(0) && sv.getValue().equals(0) && h.getValue().equals(0))) {
-			alertWindow();
-		}else {
-		makeList();
-		
-		player1.setNimi(p1.getText());
-		player2.setNimi(p2.getText());
-		if (player1.getNimi().isEmpty() || player2.getNimi().isEmpty() || laudanKoko.getText().isEmpty()
-				|| (lta.getValue().equals(0) && tl.getValue().equals(0) && r.getValue().equals(0) && sv.getValue().equals(0) && h.getValue().equals(0))) {
-			alertWindow();
-		}else {
-		// välitettävät tiedot
 
+		player1.setNimi(p1.getText());
+		player2.setNimi(p2.getText());
+		if (player1.getNimi().isEmpty() || player2.getNimi().isEmpty() || laudanKoko.getText().isEmpty()
+				|| (lta.getValue().equals(0) && tl.getValue().equals(0) && r.getValue().equals(0)
+						&& sv.getValue().equals(0) && h.getValue().equals(0))) {
+			alertWindow();
+		} else {
+			// välitettävät tiedot
 
 //		player1.setNimi(p1.getText());
 //		player2.setNimi(p2.getText());
 
+			//
 
-
-
-		//
-
-			FXMLLoader loader=new FXMLLoader(getClass().getResource("board.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("board.fxml"));
 			Parent root = loader.load();
-			
-			//välitetään tiedot
-			setShipsController shipsController=loader.getController();
-			//lauta
-			shipsController.createLauta(Integer.valueOf(koko),p1.getText() );
-			shipsController.createLauta(Integer.valueOf(koko),p2.getText() );
-			shipsController.displayLauta(0);
-		// laivat
-		shipsController.createShips(laivat, Integer.valueOf(koko) );
 
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		scene.getStylesheets().addAll(this.getClass().getResource("boardStyle.css").toExternalForm());
-		stage.setScene(scene);
-		stage.show();
+			// välitetään tiedot
+			setShipsController shipsController = loader.getController();
+			// lauta
+			shipsController.createLauta(Integer.valueOf(koko), p1.getText());
+			shipsController.createLauta(Integer.valueOf(koko), p2.getText());
+			shipsController.displayLauta(0);
+
+			// laivat
+			shipsController.createShips(laivat, Integer.valueOf(koko));
+
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Scene scene = new Scene(root);
+//			scene.getStylesheets().addAll(this.getClass().getResource("boardStyle.css").toExternalForm());
+			stage.setScene(scene);
+			stage.show();
+		}
 
 	}
 

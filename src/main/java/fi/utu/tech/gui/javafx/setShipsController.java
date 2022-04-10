@@ -178,6 +178,7 @@ public class setShipsController {
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("betweenStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}

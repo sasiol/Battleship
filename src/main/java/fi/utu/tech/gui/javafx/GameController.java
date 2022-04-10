@@ -11,33 +11,34 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class GameController {
-	
+
 	@FXML
 	private Button turnButton;
 	@FXML
 	private BorderPane turnPane;
-	
+
 	@FXML
 	private Pane peliRuutu;
-	
-	private ArrayList<Board> laudat=new ArrayList<>();
-	
-	
-	public void displayLauta(int i ) {
-		//find laudan pelaaja
-		Board lauta=laudat.get(i);
-		
-		System.out.println("Laudan laivat" +laudat.get(0).getChildren());
-	//	peliRuutu.getChildren().add(lauta);
-		//nimi.setText(lauta.getPelaaja());
-		//psIkkuna.getChildren().add(nimi);
-		
+
+	private ArrayList<Board> laudat = new ArrayList<>();
+
+	public void displayLauta(int i) {
+		// find laudan pelaaja
+		Board lauta = laudat.get(i);
+
+		System.out.println("Laudan laivat" + laudat.get(0).getChildren());
+		// peliRuutu.getChildren().add(lauta);
+		// nimi.setText(lauta.getPelaaja());
+		// psIkkuna.getChildren().add(nimi);
+
 	}
+
 	public void setLista(ArrayList<Board> laudat) {
-		this.laudat=laudat;
+		this.laudat = laudat;
 	}
 
 	// siirry väliruutuun, sama kuin PlacementControllerissa
@@ -51,13 +52,13 @@ public class GameController {
 		stage.show();
 	}
 
-
 	// Siirry voittoruutuun
 	@FXML
 	public void switchToWinScreen(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("winScreen.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("winscreenstyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
