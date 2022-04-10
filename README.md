@@ -1,3 +1,5 @@
+# **Battleship**
+
 **Ryhmän jäsenet:**
 
 - Josefiina Heikkilä, 516568
@@ -13,7 +15,17 @@ Kommunikoinnissa käytimme Discordia sekä WhatsAppia.
 
 **Pelin toiminta:**
 
+Alku menussa pelaaja voi aloittaa pelin tai poistua sovelluksesta.
 
+Kun peli aloitetaan, aukeaa peliasetusten näkymä, jossa syötetään pelaajien nimet, valitaan laudan koko sekä haluttu määrä erilaisia aluksia.
+
+Kun asetuksen on valittu, siirrytään laivojen asetteluun. 
+
+Kun molemmat pelaajat ovat asettaneet laivat pelilaudoilleen, siirrytään itse pelinäkymään.
+
+Pelaajien vuorojen välissä näkyy väliruutu, josta voi siirtyä eteenpäin seuraavan pelaajan vuoroon.
+
+Kun jompikumpi pelaaja on ampunut kaikki toisen pelaajan laivat, siirrytään voittoruutuun. Pelaajat voivat aloittaa uuden pelin tai poistua sovelluksesta.
 
 **Muuta huomioitavaa työstä:**
 
