@@ -25,14 +25,7 @@ public class MenuController {
 	@FXML
 	private BorderPane menupane;
 
-	// siirry stageen laivojen asettamista varten
-	// jos lauta asetetaan johonkin olioon/muuttujaan niin ehkä tää voi vaan
-	// päivittyä?
-	// ja tyyliin kun molemmat laudat on asetettu niin tulee nkyviin nappi et peli
-	// alkaa
-
-	//Josba heitä tää sun kontrolleriin ja laita tilalle et miten mennään sun sceneen
-	// Eli vaihda nimi ja fxml-tiedoston nimi JA fxml tiedostoissa ne nappuloiden metodit
+	// siirry asetukset-stageen
 
 	@FXML
 	public void switchToSettings(ActionEvent event) throws IOException {
@@ -46,7 +39,7 @@ public class MenuController {
 		stage.show();
 	}
 
-	// sulje sovellus
+	// sulje sovellus ja varmista haluaako pelaaja varmasti poistua
 	@FXML
 	protected void handleExitButton(ActionEvent event) {
 		System.out.println("Closing app.");

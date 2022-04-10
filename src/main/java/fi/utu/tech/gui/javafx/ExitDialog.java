@@ -8,6 +8,7 @@ import javafx.scene.control.Alert.AlertType;
 
 public class ExitDialog {
 	
+	//Varmistetaan haluaako pelaaja poistua
 	public void handleExit() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 	    alert.setTitle("Exit game?");

@@ -34,11 +34,12 @@ public class WinController {
 		stage.show();
 	}
 
-	// sulje sovellus, sama kuin MenuControllerissa
+	//sulje sovellus ja varmista haluaako pelaaja varmasti poistua
 	@FXML
 	protected void handleExitButton(ActionEvent event) {
 		System.out.println("Closing app.");
-		Platform.exit();
+		ExitDialog exitDialog = new ExitDialog();
+		exitDialog.handleExit();
 	}
 
 }

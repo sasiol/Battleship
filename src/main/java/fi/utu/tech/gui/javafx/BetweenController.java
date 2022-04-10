@@ -15,13 +15,16 @@ public class BetweenController {
 	@FXML
 	private Button betweenButton;
 
-	// siirry pelivuoro-stageen
+	// vaihtaa pelivuoro-stageen, hakee resources-kansiosta pelivuoron fxml-pohjan
+	// ja css-tyylin.
 	@FXML
 	public void switchToTurnScreen(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("turn.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+
 		scene.getStylesheets().addAll(this.getClass().getResource("turnStyle.css").toExternalForm());
+
 		stage.setScene(scene);
 		stage.show();
 	}

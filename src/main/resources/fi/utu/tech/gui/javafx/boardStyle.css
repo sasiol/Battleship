@@ -3,6 +3,10 @@
     -fx-text-fill: #FFFFFF;
 }
 
+#laivaParkki{
+	-fx-background-color: #627D98;
+}
+
 .label{ 
 	-fx-text-fill: #FFFFFF;
 }

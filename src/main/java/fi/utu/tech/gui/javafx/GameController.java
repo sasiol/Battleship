@@ -65,7 +65,7 @@ public class GameController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	@FXML
 	protected void handleExitButton(ActionEvent event) {
 		System.out.println("Closing app.");
