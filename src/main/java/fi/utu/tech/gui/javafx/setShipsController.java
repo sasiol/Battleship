@@ -21,8 +21,6 @@ import javafx.stage.Stage;
 
 public class setShipsController {
 
-	// placeholder, joskus start game nappula, joka tulee kun molemmat laudat on
-	// asetettu ja peli voi alkaa
 	@FXML
 	private Button nextScene;
 	@FXML
@@ -44,11 +42,7 @@ public class setShipsController {
 	private ArrayList<Integer> laivat = new ArrayList<>();
 	private Integer lkoko;
 
-//	public void initialize() {
-//		//displayLauta(1);
-//		//displayShips();
-//	}
-
+	// laivojen teko
 	public void createShips(ArrayList<Integer> laivat, int lkoko) {
 		this.laivat = laivat;
 		this.lkoko = lkoko;
@@ -66,10 +60,9 @@ public class setShipsController {
 			Ship laiva = new Ship(5);
 			laiva.setWidth(ruutu);
 			laiva.setHeight(5 * ruutu);
-		
 
 			Bounds boundsInScene = laiva.localToScene(laiva.getBoundsInLocal());
-			System.out.println(boundsInScene);
+
 			laivaParkki.setAlignment(laiva, Pos.TOP_LEFT);
 			laivaParkki.setMargin(laiva, new Insets(10, 10, 10, 10));
 
@@ -109,7 +102,7 @@ public class setShipsController {
 			laiva.setHeight(3 * ruutu);
 			laivaParkki.setAlignment(laiva, Pos.BOTTOM_RIGHT);
 			laivaParkki.setMargin(laiva, new Insets(10, 10, 10, 10));
-			System.out.println("margin" + laivaParkki.getMargin(laiva));
+
 			laivaParkki.getChildren().add(laiva);
 		}
 	}
@@ -126,26 +119,17 @@ public class setShipsController {
 		}
 	}
 
-//	public void displayShips() {
-//		Ship laiva=new Ship(lauta);
-//		laiva.setWidth(50);
-//		laiva.setHeight(80);
-//	
-//	laivaParkki.getChildren().addAll(laiva);
-//	
-//}
-
+	// tehdään lauta
 	public void createLauta(int koko, String pelaaja) {
 		Board lauta = new Board(laivaParkki, koko, pelaaja);
-		
 
 		laudat.add(lauta);
-		
 
 		// psLauta.getChildren().add(lauta);
 
 	}
 
+	// näytetään lauta
 	public void displayLauta(int i) {
 		// find laudan pelaaja
 		Board lauta = laudat.get(i);
@@ -157,9 +141,7 @@ public class setShipsController {
 
 	@FXML
 	public void nextBoard(ActionEvent event) throws IOException {
-		// if (arePlaced == true) {
-		// SceneController.switchToBoardCreation(event);
-		System.out.println("Laudan laivat" + laudat.get(0).getChildren());
+
 		psLauta.getChildren().clear();
 		laivaParkki.getChildren().clear();
 		createShips(laivat, lkoko);
@@ -173,13 +155,11 @@ public class setShipsController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("betweenScreen.fxml"));
 		Parent root = loader.load();
 
-		// välitetään tiedot EI TOIMI
+		// välitetään tiedot
 		BetweenController betweeController = loader.getController();
-		// lauta
 
 		betweeController.setLista(laudat);
 		betweeController.displayLauta(0);
-		
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);

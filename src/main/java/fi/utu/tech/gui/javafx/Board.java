@@ -1,6 +1,5 @@
 package fi.utu.tech.gui.javafx;
 
-
 import java.util.ArrayList;
 
 import javafx.event.EventHandler;
@@ -18,209 +17,172 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
 
-public class Board extends Pane{
+public class Board extends Pane {
 	Pane lauta;
-	public Ship prest=new Ship(0);
+	// mitä laivaa on viimeksi klikattu
+	public Ship prest = new Ship(0);
 	@FXML
 	private StackPane laivaParkki;
-	
-	private GridPane salaus=new GridPane();
-	
+
+	private GridPane salaus = new GridPane();
+
 	private int koko;
 	private String pelaaja;
-	private ArrayList<Ship> laivat=new ArrayList<>();
-	private ArrayList<Button> nappulat=new ArrayList<>();
+	private ArrayList<Ship> laivat = new ArrayList<>();
+	private ArrayList<Button> nappulat = new ArrayList<>();
 	private int hp;
-	
-	
 
-	
 	public Board(StackPane laivaParkki, int koko, String pelaaja) {
 		super();
-		//this.setPrefSize(400, 400);
+
 		this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-		
+
 		this.setScaleShape(true);
 		this.setStyle("-fx-background-color:white");
-		this.laivaParkki=laivaParkki;
-		this.koko=koko;
-		this.pelaaja=pelaaja;
-		//asetetaan oiean kokoinen ruudukko
-		double ruutKoko=400/koko;
-		
-		for(int i=0; i<koko+1; i++) {
-			//luodaan laudan ruudukko
-			Line lineY=new Line(i*ruutKoko, 0, i*ruutKoko, 400);
-			Line lineX=new Line(0, i*ruutKoko, 400, i*ruutKoko);
-		this.getChildren().addAll(lineY,lineX);
+		this.laivaParkki = laivaParkki;
+		this.koko = koko;
+		this.pelaaja = pelaaja;
+		// asetetaan oiean kokoinen ruudukko
+		double ruutKoko = 400 / koko;
+
+		for (int i = 0; i < koko + 1; i++) {
+			// luodaan laudan ruudukko
+			Line lineY = new Line(i * ruutKoko, 0, i * ruutKoko, 400);
+			Line lineX = new Line(0, i * ruutKoko, 400, i * ruutKoko);
+			this.getChildren().addAll(lineY, lineX);
 		}
-		
-		//luodaan saman kokoinen GridPane täynnä nappuloita
-		//tämä tulee pelin alkaessa estämään laivojen näkemisen
-		for(int i=0; i<koko; i++) {
-			for(int j=0;j<koko;j++) {
-				Button b=new Button("?");
+
+		// luodaan saman kokoinen GridPane täynnä nappuloita
+		// tämä tulee pelin alkaessa estämään laivojen näkemisen
+		for (int i = 0; i < koko; i++) {
+			for (int j = 0; j < koko; j++) {
+				Button b = new Button("?");
 				nappulat.add(b);
-				b.setOnAction( event->{
+				// kun nappulaa ḱlikataan asetetaan nappula näkymättömäksi
+				// ja salaus niin että jos se on näkymätön se ei vastaan ota klikkaukisa
+				b.setOnAction(event -> {
 					b.setVisible(false);
 					salaus.setPickOnBounds(false);
-//					if(b.isVisible()==false) {
-//						System.out.println("managed false");
-//					b.setDisable();
-//					}
-//					else{
-//						b.setVisible(false);
-//					}
-					});
-			
+
+				});
+
 				b.setPrefSize(ruutKoko, ruutKoko);
 				b.setStyle("-fx-background-color:blue");
 				salaus.add(b, i, j);
-				
-			}}
-		
-		
-		
-		
-//		this.setOnMouseClicked(e->{
-//			System.out.println("event hand");
-//		 //  if((Ship)e.getTarget()==Ship)
-//		        prest =  (Ship) e.getSource();
-//		        
-//		    });
-			//käydään läpi laivojen hpt
-		
-		
-	
-		
-		
-		//asetetaan drag and drop
-		this.setOnDragDropped(e->{
-			Dragboard db= e.getDragboard();
-			String Sid=db.getString();
-			
-			Ship la=(Ship) laivaParkki.lookup("#"+Sid);
-			Ship lala=(Ship) this.lookup("#"+Sid);
-			
-			
-			//laivaparkista laudalle siirto
-			if(la!=null) {
-				
+
+			}
+		}
+
+		// asetetaan drag and drop
+		this.setOnDragDropped(e -> {
+			Dragboard db = e.getDragboard();
+			String Sid = db.getString();
+
+			// la on laivoille jotka tulee laivaparkista
+			// lala on laivoille jotka tulee laudasta
+			Ship la = (Ship) laivaParkki.lookup("#" + Sid);
+			Ship lala = (Ship) this.lookup("#" + Sid);
+
+			// laivaparkista laudalle siirto
+			if (la != null) {
+
 				laivaParkki.getChildren().remove(la);
-				
+
 				Bounds boundsInScene = la.localToScene(la.getBoundsInLocal());
-				Point2D location=new Point2D(e.getX(), e.getY());
+				Point2D location = new Point2D(e.getX(), e.getY());
 				la.setLayoutX(location.getX());
 				la.setLayoutY(location.getY());
 
+				// asetetaan laivalle MouseEvent, hp ja viedään se prestiin
 				la.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 				laivat.add(la);
 				this.setHP(la.getHP());
-				prest=la;
+				prest = la;
 				this.getChildren().add(la);
 				e.setDropCompleted(true);
 			}
-			
-			//laudan sisällä liikuttelu
-			else if(lala!=null){
-				
-				
-				Bounds boundsInScene = lala.localToScene(lala.getBoundsInLocal());
-				Point2D location=new Point2D(e.getX(), e.getY());
-				lala.relocate(location.getX(),location.getY());
-				//prest.setLayoutY(location.getY());
 
-				
-				//this.getChildren().add(prest);
+			// laudan sisällä liikuttelu
+			else if (lala != null) {
+
+				Bounds boundsInScene = lala.localToScene(lala.getBoundsInLocal());
+				Point2D location = new Point2D(e.getX(), e.getY());
+				lala.relocate(location.getX(), location.getY());
 				e.setDropCompleted(true);
 			}
-			
-			
-			
-		});
-	
-	this.setOnDragOver(e->{
-		
-		e.acceptTransferModes(TransferMode.MOVE);
-		
-		e.consume();
-	});
 
-	this.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-		
-		if (event.getCode() == KeyCode.R) {
-			prest.setRotate(prest.getRotate()+90);
-			
-		}
-		//voi liikutella ylös ja alas
-		if (event.getCode() == KeyCode.UP) {
-			prest.setLayoutY(prest.getLayoutY()-10);
-			
-		}
-		if (event.getCode() == KeyCode.DOWN) {
-			prest.setLayoutY(prest.getLayoutY()+10);
-			
-		}
-		if (event.getCode() == KeyCode.LEFT) {
-			prest.setLayoutX(prest.getLayoutX()-10);
-			
-		}
-		if (event.getCode() == KeyCode.RIGHT) {
-			prest.setLayoutX(prest.getLayoutX()+10);
-			
-		}
-	});
-	
-	
+		});
+
+		this.setOnDragOver(e -> {
+
+			e.acceptTransferModes(TransferMode.MOVE);
+
+			e.consume();
+		});
+
+		// laivaa voi liikutella näppäimillä. Sitä voi kääntää tai liikutella ylös, alas
+		// ja sivuille
+		this.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+
+			if (event.getCode() == KeyCode.R) {
+				prest.setRotate(prest.getRotate() + 90);
+
+			}
+			// voi liikutella ylös ja alas
+			if (event.getCode() == KeyCode.UP) {
+				prest.setLayoutY(prest.getLayoutY() - 10);
+
+			}
+			if (event.getCode() == KeyCode.DOWN) {
+				prest.setLayoutY(prest.getLayoutY() + 10);
+
+			}
+			if (event.getCode() == KeyCode.LEFT) {
+				prest.setLayoutX(prest.getLayoutX() - 10);
+
+			}
+			if (event.getCode() == KeyCode.RIGHT) {
+				prest.setLayoutX(prest.getLayoutX() + 10);
+
+			}
+		});
+
 	}
-	
-//	public void suojausClickable(boolean tf) {
-//		salaus.setPickOnBounds(true);
-//		for(Button n:nappulat) {
-//			n.setClickable(false);
-//			
-//		}
-//		System.out.println("nappulat on "+nappulat.get(2).isDisabled());
-//	}
-	
-	public ArrayList<Ship> getShips(){
-		return  laivat;
+
+	public ArrayList<Ship> getShips() {
+		return laivat;
 	}
+
 	public String getPelaaja() {
 		return pelaaja;
 	}
-	
-	 EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-	public void handle(MouseEvent event) {
-//		System.out.println("handle toimii"+ event.getTarget().getClass());
-//		System.out.println(prest.getClass());
-	    if (event.getTarget().getClass()==prest.getClass()){
-	    
-	      prest=(Ship)event.getTarget();
-	    }
-	  }
-	 };
 
-public void setHP(int h) {
-	this.hp=hp+h;
-}
-public void miinustaHP(){
-	this.hp--;
-	System.out.println("HP on"+this.hp);
-	if(hp==0) {
-		System.out.println("VOITIIIT!!!");
+	EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+		public void handle(MouseEvent event) {
+
+			if (event.getTarget().getClass() == prest.getClass()) {
+
+				prest = (Ship) event.getTarget();
+			}
+		}
+	};
+
+	// asetetaan laudalle laivojen yhteinen hp
+	public void setHP(int h) {
+		this.hp = hp + h;
 	}
-}
+
+	public void miinustaHP() {
+		this.hp--;
+
+		if (hp == 0) {
+			System.out.println("VOITIIIT!!!");
+		}
+	}
 
 	public GridPane getSalaus() {
 		// TODO Auto-generated method stub
 		return salaus;
 	}
-	
-	
-	}
 
-	
-	
-
-
+}
