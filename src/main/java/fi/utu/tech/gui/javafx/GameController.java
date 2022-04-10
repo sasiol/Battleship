@@ -1,6 +1,7 @@
 package fi.utu.tech.gui.javafx;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,12 +14,31 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class GameController {
-	@FXML
-	private Button betweenButton;
+	
 	@FXML
 	private Button turnButton;
 	@FXML
 	private BorderPane turnPane;
+	
+	@FXML
+	private Pane peliRuutu;
+	
+	private ArrayList<Board> laudat=new ArrayList<>();
+	
+	
+	public void displayLauta(int i ) {
+		//find laudan pelaaja
+		Board lauta=laudat.get(i);
+		
+		System.out.println("Laudan laivat" +laudat.get(0).getChildren());
+	//	peliRuutu.getChildren().add(lauta);
+		//nimi.setText(lauta.getPelaaja());
+		//psIkkuna.getChildren().add(nimi);
+		
+	}
+	public void setLista(ArrayList<Board> laudat) {
+		this.laudat=laudat;
+	}
 
 	// siirry väliruutuun, sama kuin PlacementControllerissa
 	@FXML
@@ -31,16 +51,6 @@ public class GameController {
 		stage.show();
 	}
 
-	// siirry pelivuoro-stageen
-	@FXML
-	public void switchToTurnScreen(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("turn.fxml"));
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		scene.getStylesheets().addAll(this.getClass().getResource("turnStyle.css").toExternalForm());
-		stage.setScene(scene);
-		stage.show();
-	}
 
 	// Siirry voittoruutuun
 	@FXML

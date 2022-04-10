@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="boardPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="819.0" stylesheets="@boardStyle.css" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.setShipsController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.setShipsController">
    <center>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="356.0" prefWidth="408.0" BorderPane.alignment="CENTER">
          <right>
@@ -15,8 +15,8 @@
                <children>
                   <Label fx:id="nimi" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Pelaajan nimi?" />
                   <StackPane fx:id="laivaParkki" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="272.0" stylesheets="@boardStyle.css" VBox.vgrow="ALWAYS" />
-                  <Button fx:id="nextscene" mnemonicParsing="false" onAction="#switchToBetweenScreen" text="Next scene" />
-                  <Button fx:id="Ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready" />
+                  <Button fx:id="nextScene" mnemonicParsing="false" onAction="#switchToNextScene" text="Next scene" />
+                  <Button fx:id="ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready" />
                </children>
             </VBox>
          </right>

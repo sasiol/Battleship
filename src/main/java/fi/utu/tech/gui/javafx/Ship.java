@@ -15,14 +15,14 @@ import javafx.scene.shape.Shape;
 public class Ship extends Rectangle{
 	// onko nodea klikattu
 	UUID id= UUID.randomUUID();
-		private Node prest;
-		private Board lauta;
+		//private Board lauta;
 		private int hp;
 	
-	public Ship(Board lauta) {
+	public Ship(int hp) {
 	//	super( Color.RED);
 		this.setId(id.toString());
-		this.lauta=lauta;
+		this.hp=hp;
+		//this.lauta=lauta;
 		makeDraggable();
 	}
 	
@@ -31,28 +31,28 @@ public class Ship extends Rectangle{
 	}
 
 	// Drag effect
-	private double startX;
-	private double startY;
-	
-	public void setStartCoords(double x, double y) {
-		this.startX=x;
-		this.startY=y;
-	}
+//	private double startX;
+//	private double startY;
+//	
+//	public void setStartCoords(double x, double y) {
+//		this.startX=x;
+//		this.startY=y;
+//	}
 
+	
 	void makeDraggable() {
 
 		this.setOnMousePressed(e -> {
 			((Node) e.getSource()).requestFocus();
-			startX = e.getX();
-			startY = e.getY();
+//			startX = e.getX();
+//			startY = e.getY();
 
-			lauta.setPrest(this);
 
 		});
-		this.setOnMouseDragged(e->{
-			this.setLayoutX(e.getSceneX() - startX);
-			this.setLayoutY(e.getSceneY() - startY);
-		});
+//		this.setOnMouseDragged(e->{
+//			this.setLayoutX(e.getSceneX() - startX);
+//			this.setLayoutY(e.getSceneY() - startY);
+//		});
 
 		this.setOnDragDetected(e -> {
 			//System.out.println("drag detetecyted");
@@ -69,5 +69,7 @@ public class Ship extends Rectangle{
 			e.consume();
 
 		});
-	}
+	//}
+}
+
 }

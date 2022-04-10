@@ -1,12 +1,17 @@
 package fi.utu.tech.gui.javafx;
 
 
+import java.util.ArrayList;
+
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -14,15 +19,17 @@ import javafx.scene.shape.Line;
 
 public class Board extends Pane{
 	Pane lauta;
-	private Ship prest=new Ship(null);
+	public Ship prest=new Ship(0);
 	@FXML
 	private StackPane laivaParkki;
 	
 	private int koko;
+	private String pelaaja;
+	private ArrayList<Ship> laivat=new ArrayList<>();
 	
 
 	
-	public Board(StackPane laivaParkki, int koko) {
+	public Board(StackPane laivaParkki, int koko, String pelaaja) {
 		super();
 		//this.setPrefSize(400, 400);
 		this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -31,7 +38,7 @@ public class Board extends Pane{
 		this.setStyle("-fx-background-color:white");
 		this.laivaParkki=laivaParkki;
 		this.koko=koko;
-		
+		this.pelaaja=pelaaja;
 		//asetetaan oiean kokoinen ruudukko
 		double ruutKoko=400/koko;
 		
@@ -43,6 +50,14 @@ public class Board extends Pane{
 		
 		
 		
+//		this.setOnMouseClicked(e->{
+//			System.out.println("event hand");
+//		 //  if((Ship)e.getTarget()==Ship)
+//		        prest =  (Ship) e.getSource();
+//		        
+//		    });
+			
+		
 	
 		
 		
@@ -53,11 +68,10 @@ public class Board extends Pane{
 			
 			Ship la=(Ship) laivaParkki.lookup("#"+Sid);
 			Ship lala=(Ship) this.lookup("#"+Sid);
-			System.out.println("hee hee");
+			
 			
 			//laivaparkista laudalle siirto
 			if(la!=null) {
-				System.out.println("nulli pulli");
 				
 				laivaParkki.getChildren().remove(la);
 				
@@ -66,14 +80,15 @@ public class Board extends Pane{
 				la.setLayoutX(location.getX());
 				la.setLayoutY(location.getY());
 
-				
+				la.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+				laivat.add(la);
+				prest=la;
 				this.getChildren().add(la);
 				e.setDropCompleted(true);
 			}
 			
 			//laudan sisällä liikuttelu
 			else if(lala!=null){
-				System.out.println("laudan sisällä jejee");
 				
 				
 				Bounds boundsInScene = lala.localToScene(lala.getBoundsInLocal());
@@ -91,7 +106,7 @@ public class Board extends Pane{
 		});
 	
 	this.setOnDragOver(e->{
-		System.out.println("DragOveeerr");
+		
 		e.acceptTransferModes(TransferMode.MOVE);
 		
 		e.consume();
@@ -125,7 +140,28 @@ public class Board extends Pane{
 	
 	}
 	
-	public void setPrest(Ship laiva) {
-		this.prest=laiva;
+	public ArrayList<Ship> getShips(){
+		return  laivat;
 	}
-}
+	public String getPelaaja() {
+		return pelaaja;
+	}
+	
+	 EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+	public void handle(MouseEvent event) {
+//		System.out.println("handle toimii"+ event.getTarget().getClass());
+//		System.out.println(prest.getClass());
+	    if (event.getTarget().getClass()==prest.getClass()){
+	    
+	      prest=(Ship)event.getTarget();
+	    }
+	  }
+	 };
+	
+	
+	}
+
+	
+	
+
+
