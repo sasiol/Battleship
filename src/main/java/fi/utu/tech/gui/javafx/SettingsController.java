@@ -66,6 +66,8 @@ public class SettingsController {
 	private Spinner<Integer> h;
 	@FXML
 	private Label ruudut;
+	@FXML
+	private Button settingsExit;
 
 	private String koko;
 
@@ -107,6 +109,13 @@ public class SettingsController {
 		dialogPane.getStyleClass().add("myDialog");
 
 		alert.showAndWait();
+	}
+
+	@FXML
+	protected void handleExitButton(ActionEvent event) {
+		System.out.println("Closing app.");
+		ExitDialog exitDialog = new ExitDialog();
+		exitDialog.handleExit();
 	}
 
 	void makeList() {

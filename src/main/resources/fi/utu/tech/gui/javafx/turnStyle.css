@@ -3,6 +3,10 @@
     -fx-text-fill: #FFFFFF;
 }
 
+#peliRuutu{
+	-fx-background-color: #171d26;  
+}
+
 .label{ 
 	-fx-text-fill: #FFFFFF;
 }

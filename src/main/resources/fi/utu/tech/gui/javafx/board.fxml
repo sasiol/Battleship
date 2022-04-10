@@ -20,8 +20,11 @@
                      <VBox.margin>
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin></StackPane>
-                  <Button fx:id="nextScene" mnemonicParsing="false" onAction="#switchToNextScene" prefHeight="26.0" prefWidth="108.0" text="Next scene" />
-                  <Button fx:id="ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready">
+                  <Button fx:id="ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="1 Ready">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin></Button>
+                  <Button fx:id="nextScene" mnemonicParsing="false" onAction="#switchToNextScene" prefHeight="26.0" prefWidth="108.0" text="2 Ready">
                      <VBox.margin>
                         <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                      </VBox.margin></Button>

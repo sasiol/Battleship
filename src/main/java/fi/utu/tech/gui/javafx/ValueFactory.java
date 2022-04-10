@@ -4,8 +4,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 
-public class ValueFactory<T> extends SpinnerValueFactory<Integer>{
-	
+public class ValueFactory<T> extends SpinnerValueFactory<Integer> {
+
 	private Spinner<Integer> alus;
 	private int aluksenRuudut; // montako ruutua alus vie
 	private int maara; // montako tätä alusta voi olla
@@ -20,33 +20,33 @@ public class ValueFactory<T> extends SpinnerValueFactory<Integer>{
 		this.setValue(0);
 	}
 
-	
 	// aluksen määrää vähennettäessä tarkistetaan, ettei arvo ole jo 0
 	@Override
 	public void decrement(int steps) {
-		
+
 		int ruutuMaara = Integer.parseInt(this.ruudut.getText());
 		int nyt = (int) alus.getValue();
 		if (nyt > 0) {
-			this.setValue(Integer.valueOf(nyt-1));
+			this.setValue(Integer.valueOf(nyt - 1));
 			ruudut.setText(String.valueOf(ruutuMaara + aluksenRuudut));
-		}else {
+		} else {
 			this.setValue(nyt);
 		}
 	}
 
-	// aluksen määrää lisätessä tarkistetaan, että ruutuja on tarpeeksi käytettävissä
+	// aluksen määrää lisätessä tarkistetaan, että ruutuja on tarpeeksi
+	// käytettävissä
 	// eikä alusten määrä ylitä sallittua
 	@Override
 	public void increment(int steps) {
 		int ruutuMaara = Integer.parseInt(this.ruudut.getText());
 		System.out.println("eka" + ruudut);
 		int nyt = (int) alus.getValue(); // alusten määrä atm
-		if(nyt < maara && ruutuMaara >= aluksenRuudut) {
-			this.setValue(nyt+1);
-			ruudut.setText(String.valueOf(ruutuMaara -aluksenRuudut));
+		if (nyt < maara && ruutuMaara >= aluksenRuudut) {
+			this.setValue(nyt + 1);
+			ruudut.setText(String.valueOf(ruutuMaara - aluksenRuudut));
 			System.out.println("sitten" + ruudut);
-		}else {
+		} else {
 			this.setValue(nyt);
 		}
 	}

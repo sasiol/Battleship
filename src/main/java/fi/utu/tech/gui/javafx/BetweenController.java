@@ -16,7 +16,6 @@ public class BetweenController {
 	@FXML
 	private Button betweenButton;
 
-<<<<<<< HEAD
 	private ArrayList<Board> laudat = new ArrayList<>();
 
 	private int vuoro = 0;
@@ -24,11 +23,6 @@ public class BetweenController {
 	public void displayLauta(int i) {
 		// find laudan pelaaja
 		Board lauta = laudat.get(i);
-
-		// System.out.println("Laudan laivat" +laudat.get(0).getChildren());
-		// peliRuutu.getChildren().add(lauta);
-		// nimi.setText(lauta.getPelaaja());
-		// psIkkuna.getChildren().add(nimi);
 
 	}
 
@@ -42,10 +36,9 @@ public class BetweenController {
 	}
 
 	// siirry pelivuoro-stageen
-=======
 	// vaihtaa pelivuoro-stageen, hakee resources-kansiosta pelivuoron fxml-pohjan
 	// ja css-tyylin.
->>>>>>> refs/remotes/origin/justLooks
+
 	@FXML
 	public void switchToTurnScreen(ActionEvent event) throws IOException {
 
@@ -54,7 +47,6 @@ public class BetweenController {
 
 		// välitetään tiedot
 		GameController gameController = loader.getController();
-		
 
 		// lauta
 		// katsotaan kenen pelaajan vuoro on ja lähetetään päivitettyt laudat
