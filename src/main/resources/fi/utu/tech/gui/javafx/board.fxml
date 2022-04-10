@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.setShipsController">
+<BorderPane fx:id="boardPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="819.0" stylesheets="@boardStyle.css" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.setShipsController">
    <center>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="356.0" prefWidth="408.0" BorderPane.alignment="CENTER">
          <right>
             <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="315.0" prefWidth="195.0" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="nimi" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Pelaajan nimi?" />
-                  <StackPane fx:id="laivaParkki" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="272.0" VBox.vgrow="ALWAYS" />
-                  <Button fx:id="nextScene" mnemonicParsing="false" onAction="#switchToNextScene" text="Next scene" />
-                  <Button fx:id="ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready" />
+                  <StackPane fx:id="laivaParkki" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="272.0" stylesheets="@boardStyle.css" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin></StackPane>
+                  <Button fx:id="nextScene" mnemonicParsing="false" onAction="#switchToNextScene" prefHeight="26.0" prefWidth="108.0" text="Next scene" />
+                  <Button fx:id="ready" mnemonicParsing="false" onAction="#nextBoard" prefHeight="24.0" prefWidth="109.0" text="Ready">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
          </right>
          <center>
-            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+            <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@boardStyle.css" BorderPane.alignment="CENTER" />
          </center>
          <left>
             <VBox fx:id="psLauta" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
@@ -29,14 +37,19 @@
       </BorderPane>
    </center>
    <top>
-      <VBox fx:id="psIkkuna" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+      <HBox prefHeight="90.0" prefWidth="819.0">
          <children>
-            <Label text="Place ships">
+            <Label alignment="CENTER" prefHeight="79.0" prefWidth="702.0" text="Place ships">
                <font>
-                  <Font size="28.0" />
+                  <Font size="38.0" />
                </font>
             </Label>
+            <Button fx:id="boardExit" alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#handleExitButton" text="Exit game" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin>
+            </Button>
          </children>
-      </VBox>
+      </HBox>
    </top>
 </BorderPane>

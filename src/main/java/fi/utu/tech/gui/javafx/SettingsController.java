@@ -3,6 +3,7 @@ package fi.utu.tech.gui.javafx;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +13,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 // Pelin asetusten laittaminen
@@ -101,6 +104,12 @@ public class SettingsController {
 		alert.setTitle("Attention!");
 		alert.setHeaderText("Game settings are incomplete.");
 		alert.setContentText("Please check that you have filled all necessary information.");
+		
+		DialogPane dialogPane = alert.getDialogPane();
+		dialogPane.getStylesheets().add(
+		   getClass().getResource("dialog.css").toExternalForm());
+		dialogPane.getStyleClass().add("myDialog");
+		
 		alert.showAndWait();
 	}
 
@@ -108,10 +117,10 @@ public class SettingsController {
 
 	void makeList() {
 		laivat.add(lta.getValue());
-		laivat.add(tl.getValue( ));
-		laivat.add(r.getValue() );
+		laivat.add(tl.getValue());
+		laivat.add(r.getValue());
 		laivat.add(sv.getValue());
-		laivat.add(h.getValue() );
+		laivat.add(h.getValue());
 		System.out.println(laivat);
 	}
 	
@@ -121,7 +130,7 @@ public class SettingsController {
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
 		makeList();
-		
+
 		player1.setNimi(p1.getText());
 		player2.setNimi(p2.getText());
 		// tarkistetaan onko tarvitut tiedot
@@ -137,12 +146,12 @@ public class SettingsController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("board.fxml"));
 
 			Parent root = loader.load();
-			
-			//välitetään tiedot
-			setShipsController shipsController=loader.getController();
-			//lauta
-			shipsController.createLauta(Integer.valueOf(koko),p1.getText() );
-			shipsController.createLauta(Integer.valueOf(koko),p2.getText() );
+
+			// välitetään tiedot
+			setShipsController shipsController = loader.getController();
+			// lauta
+			shipsController.createLauta(Integer.valueOf(koko), p1.getText());
+			shipsController.createLauta(Integer.valueOf(koko), p2.getText());
 			shipsController.displayLauta(0);
 		
 			
@@ -152,6 +161,7 @@ public class SettingsController {
 			
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
+			scene.getStylesheets().addAll(this.getClass().getResource("boardStyle.css").toExternalForm());
 			stage.setScene(scene);
 			stage.show();
 

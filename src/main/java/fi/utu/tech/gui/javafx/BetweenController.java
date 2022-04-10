@@ -16,6 +16,7 @@ public class BetweenController {
 	@FXML
 	private Button betweenButton;
 
+<<<<<<< HEAD
 	private ArrayList<Board> laudat = new ArrayList<>();
 
 	private int vuoro = 0;
@@ -41,6 +42,10 @@ public class BetweenController {
 	}
 
 	// siirry pelivuoro-stageen
+=======
+	// vaihtaa pelivuoro-stageen, hakee resources-kansiosta pelivuoron fxml-pohjan
+	// ja css-tyylin.
+>>>>>>> refs/remotes/origin/justLooks
 	@FXML
 	public void switchToTurnScreen(ActionEvent event) throws IOException {
 
@@ -71,6 +76,9 @@ public class BetweenController {
 		}
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+
+		scene.getStylesheets().addAll(this.getClass().getResource("turnStyle.css").toExternalForm());
+
 		stage.setScene(scene);
 		stage.show();
 	}

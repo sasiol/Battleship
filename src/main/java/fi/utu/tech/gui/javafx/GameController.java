@@ -15,9 +15,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.application.Platform;
+import javafx.scene.layout.BorderPane;
+
+
 public class GameController {
 	@FXML
 	private Button turnButton;
+	@FXML
+	private BorderPane turnPane;
+	@FXML
+	private Button turnExit;
 	@FXML
 	private StackPane peliRuutu;
 	@FXML
@@ -40,6 +48,14 @@ public class GameController {
 	public void setLista(ArrayList<Board> laudat) {
 		this.laudat = laudat;
 	}
+	
+	@FXML
+	protected void handleExitButton(ActionEvent event) {
+		System.out.println("Closing app.");
+		ExitDialog exitDialog = new ExitDialog();
+		exitDialog.handleExit();
+	}
+	
 	// siirry väliruutuun, sama kuin PlacementControllerissa
 	@FXML
 	public void switchToBetweenScreen(ActionEvent event) throws IOException {
@@ -86,6 +102,7 @@ public class GameController {
 		betweeController.setVuoro(vuoro);
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("betweenScreenStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}

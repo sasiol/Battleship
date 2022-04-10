@@ -10,11 +10,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class WinController {
 	@FXML
 	private Label winner;
+	@FXML
+	private BorderPane winpane;
 
 	// palaa menu-stageen
 	@FXML
@@ -22,6 +27,9 @@ public class WinController {
 		Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		
+		scene.getStylesheets().addAll(this.getClass().getResource("menustyle.css").toExternalForm());
+		
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -31,11 +39,13 @@ public class WinController {
 
 	}
 
-	// sulje sovellus, sama kuin MenuControllerissa
+	//sulje sovellus ja varmista haluaako pelaaja varmasti poistua
+
 	@FXML
 	protected void handleExitButton(ActionEvent event) {
 		System.out.println("Closing app.");
-		Platform.exit();
+		ExitDialog exitDialog = new ExitDialog();
+		exitDialog.handleExit();
 	}
 
 }

@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.BetweenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.utu.tech.gui.javafx.BetweenController">
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="betweenPane" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" stylesheets="@betweenScreenStyle.css" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Is next player ready? " />
-            <Button fx:id="betweenButton" mnemonicParsing="false" onAction="#switchToTurnScreen" text="Yes uwu" />
+            <Label text="Is next player ready? ">
+               <padding>
+                  <Insets bottom="30.0" />
+               </padding>
+               <font>
+                  <Font size="43.0" />
+               </font></Label>
+            <Button fx:id="betweenButton" mnemonicParsing="false" onAction="#switchToTurnScreen" prefHeight="30.0" prefWidth="91.0" text="Ready" />
          </children>
       </VBox>
    </center>

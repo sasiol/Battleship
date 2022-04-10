@@ -1,7 +1,11 @@
 package fi.utu.tech.gui.javafx;
 
+<<<<<<< HEAD
 import java.io.IOException;
+=======
+>>>>>>> refs/remotes/origin/justLooks
 import java.util.ArrayList;
+
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,23 +26,36 @@ import javafx.scene.shape.Line;
 
 public class Board extends Pane {
 	Pane lauta;
+<<<<<<< HEAD
 	// mitä laivaa on viimeksi klikattu
+=======
+>>>>>>> refs/remotes/origin/justLooks
 	public Ship prest = new Ship(0);
 	@FXML
 	private StackPane laivaParkki;
 
+<<<<<<< HEAD
 	private GridPane salaus = new GridPane();
 
+=======
+>>>>>>> refs/remotes/origin/justLooks
 	private int koko;
 	private String pelaaja;
 	private ArrayList<Ship> laivat = new ArrayList<>();
+<<<<<<< HEAD
 	private ArrayList<Button> nappulat = new ArrayList<>();
 	private int hp;
 	private boolean havittu;
+=======
+>>>>>>> refs/remotes/origin/justLooks
 
 	public Board(StackPane laivaParkki, int koko, String pelaaja) {
 		super();
+<<<<<<< HEAD
 
+=======
+		// this.setPrefSize(400, 400);
+>>>>>>> refs/remotes/origin/justLooks
 		this.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
 		this.setScaleShape(true);
@@ -50,12 +67,16 @@ public class Board extends Pane {
 		double ruutKoko = 400 / koko;
 
 		for (int i = 0; i < koko + 1; i++) {
+<<<<<<< HEAD
 			// luodaan laudan ruudukko
+=======
+>>>>>>> refs/remotes/origin/justLooks
 			Line lineY = new Line(i * ruutKoko, 0, i * ruutKoko, 400);
 			Line lineX = new Line(0, i * ruutKoko, 400, i * ruutKoko);
 			this.getChildren().addAll(lineY, lineX);
 		}
 
+<<<<<<< HEAD
 		// luodaan saman kokoinen GridPane täynnä nappuloita
 		// tämä tulee pelin alkaessa estämään laivojen näkemisen
 		for (int i = 0; i < koko; i++) {
@@ -84,6 +105,20 @@ public class Board extends Pane {
 
 			// la on laivoille jotka tulee laivaparkista
 			// lala on laivoille jotka tulee laudasta
+=======
+//		this.setOnMouseClicked(e->{
+//			System.out.println("event hand");
+//		 //  if((Ship)e.getTarget()==Ship)
+//		        prest =  (Ship) e.getSource();
+//		        
+//		    });
+
+		// asetetaan drag and drop
+		this.setOnDragDropped(e -> {
+			Dragboard db = e.getDragboard();
+			String Sid = db.getString();
+
+>>>>>>> refs/remotes/origin/justLooks
 			Ship la = (Ship) laivaParkki.lookup("#" + Sid);
 			Ship lala = (Ship) this.lookup("#" + Sid);
 
@@ -100,7 +135,10 @@ public class Board extends Pane {
 				// asetetaan laivalle MouseEvent, hp ja viedään se prestiin
 				la.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 				laivat.add(la);
+<<<<<<< HEAD
 				this.setHP(la.getHP());
+=======
+>>>>>>> refs/remotes/origin/justLooks
 				prest = la;
 				this.getChildren().add(la);
 				e.setDropCompleted(true);
@@ -112,6 +150,12 @@ public class Board extends Pane {
 				Bounds boundsInScene = lala.localToScene(lala.getBoundsInLocal());
 				Point2D location = new Point2D(e.getX(), e.getY());
 				lala.relocate(location.getX(), location.getY());
+<<<<<<< HEAD
+=======
+				// prest.setLayoutY(location.getY());
+
+				// this.getChildren().add(prest);
+>>>>>>> refs/remotes/origin/justLooks
 				e.setDropCompleted(true);
 			}
 
@@ -124,8 +168,11 @@ public class Board extends Pane {
 			e.consume();
 		});
 
+<<<<<<< HEAD
 		// laivaa voi liikutella näppäimillä. Sitä voi kääntää tai liikutella ylös, alas
 		// ja sivuille
+=======
+>>>>>>> refs/remotes/origin/justLooks
 		this.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
 
 			if (event.getCode() == KeyCode.R) {
@@ -163,6 +210,7 @@ public class Board extends Pane {
 
 	EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 		public void handle(MouseEvent event) {
+<<<<<<< HEAD
 
 			if (event.getTarget().getClass() == prest.getClass()) {
 
@@ -179,7 +227,13 @@ public class Board extends Pane {
 	public void setHP(int h) {
 		this.hp = hp + h;
 	}
+=======
+//		System.out.println("handle toimii"+ event.getTarget().getClass());
+//		System.out.println(prest.getClass());
+			if (event.getTarget().getClass() == prest.getClass()) {
+>>>>>>> refs/remotes/origin/justLooks
 
+<<<<<<< HEAD
 	public void miinustaHP() throws IOException {
 		this.hp--;
 System.out.println("pelaajan "+pelaaja+"HP on"+hp);
@@ -190,7 +244,14 @@ System.out.println("pelaajan "+pelaaja+"HP on"+hp);
 			System.out.println(pelaaja+"hävisi" +havittu);
 		}
 	}
+=======
+				prest = (Ship) event.getTarget();
+			}
+		}
+	};
+>>>>>>> refs/remotes/origin/justLooks
 
+<<<<<<< HEAD
 	public GridPane getSalaus() {
 		// TODO Auto-generated method stub
 		return salaus;
@@ -202,4 +263,6 @@ System.out.println("pelaajan "+pelaaja+"HP on"+hp);
 		return havittu;
 	}
 
+=======
+>>>>>>> refs/remotes/origin/justLooks
 }

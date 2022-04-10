@@ -3,6 +3,7 @@ package fi.utu.tech.gui.javafx;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -21,6 +23,8 @@ import javafx.stage.Stage;
 
 public class setShipsController {
 
+	@FXML
+	private BorderPane boardPane;
 	@FXML
 	private Button nextScene;
 	@FXML
@@ -33,16 +37,24 @@ public class setShipsController {
 	private StackPane laivaParkki;
 	@FXML
 	private Label nimi;
-
+	@FXML 
+	private Button boardExit;
+	
 	private Ship laiva;
 
 	private Board lauta;
-
 	private ArrayList<Board> laudat = new ArrayList<>();
 	private ArrayList<Integer> laivat = new ArrayList<>();
 	private Integer lkoko;
 
+<<<<<<< HEAD
 	// laivojen teko
+=======
+//	public void initialize() {
+//		//displayLauta(1);
+//		//displayShips();
+//	}
+>>>>>>> refs/remotes/origin/justLooks
 	public void createShips(ArrayList<Integer> laivat, int lkoko) {
 		this.laivat = laivat;
 		this.lkoko = lkoko;
@@ -163,6 +175,7 @@ public class setShipsController {
 
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Scene scene = new Scene(root);
+		scene.getStylesheets().addAll(this.getClass().getResource("betweenScreenStyle.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -174,5 +187,12 @@ public class setShipsController {
 
 	public void setLaivaParkki(StackPane laivaParkki) {
 		this.laivaParkki = laivaParkki;
+	}
+	
+	@FXML
+	protected void handleExitButton(ActionEvent event) {
+		System.out.println("Closing app.");
+		ExitDialog exitDialog = new ExitDialog();
+		exitDialog.handleExit();
 	}
 }

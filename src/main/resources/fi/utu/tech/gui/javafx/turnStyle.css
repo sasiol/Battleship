@@ -1,0 +1,24 @@
+#turnPane{
+    -fx-background-color: #171d26;  
+    -fx-text-fill: #FFFFFF;
+}
+
+.label{ 
+	-fx-text-fill: #FFFFFF;
+}
+
+.text-field{
+	-fx-background-color: #486581;
+	-fx-text-fill: #FFFFFF;
+}
+
+.button{
+	-fx-background-color: #486581;
+	-fx-text-fill: #FFFFFF;
+	-fx-border-color: #243B53;
+}
+.button:hover {
+  -fx-background-color: #627D98;
+  -fx-color: white;
+  -fx-border-color:#F0F4F8;
+}
