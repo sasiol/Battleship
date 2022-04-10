@@ -19,9 +19,11 @@ Alku menussa pelaaja voi aloittaa pelin tai poistua sovelluksesta.
 
 Kun peli aloitetaan, aukeaa peliasetusten näkymä, jossa syötetään pelaajien nimet, valitaan laudan koko sekä haluttu määrä erilaisia aluksia.
 
-Kun asetuksen on valittu, siirrytään laivojen asetteluun. 
+Kun asetuksen on valittu, siirrytään laivojen asetteluun. Laivojen raahaus saattaa asettaa laivat ruutujen väliin, jolloin pelaajan pitää asetella laivat oikeille kohdilleen ylös ja vasemmalle nuolinäppäimillä tai raahaamalla uudelleen.
 
 Kun molemmat pelaajat ovat asettaneet laivat pelilaudoilleen, siirrytään itse pelinäkymään.
+
+Jos pelaaja ampuu ohi, pelaajan täytyy itse klikata 'turn over' -nappia, josta vuoro vaihtuu. Pelaaja voi myös *laittomasti* klikata samaa kohtaa aluksesta, jolloin laiva uppoaa, vaikka koko laivaa ei ole paljastettu. Laivaa pystyy myös kääntämään pelin aikana, mikä on myös sääntöjen vastaista.
 
 Pelaajien vuorojen välissä näkyy väliruutu, josta voi siirtyä eteenpäin seuraavan pelaajan vuoroon.
 
@@ -29,7 +31,7 @@ Kun jompikumpi pelaaja on ampunut kaikki toisen pelaajan laivat, siirrytään vo
 
 **Muuta huomioitavaa työstä:**
 
-Emme ehtineet toteuttamaan pelilogiikkaa kokonaan.
+Emme ehtineet toteuttamaan pelilogiikkaa kokonaan. Pelin toimiminen on siis osittain kiinni pelaajien tunnollisuudesta.
 
 **Jälkiviisastelua:**
 
