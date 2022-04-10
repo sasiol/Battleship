@@ -25,13 +25,10 @@ public class SettingsController {
 
 	private Pelaaja player1 = new Pelaaja();
 	private Pelaaja player2 = new Pelaaja();
-<<<<<<< HEAD
 	
 	private ArrayList<Integer> laivat=new ArrayList<>();
 		
-=======
 
->>>>>>> refs/remotes/origin/josefiinan
 	@FXML
 	private MenuButton laudanKoko;
 
@@ -108,7 +105,7 @@ public class SettingsController {
 	}
 
 	
-<<<<<<< HEAD
+
 	void makeList() {
 		laivat.add(lta.getValue());
 		laivat.add(tl.getValue( ));
@@ -118,9 +115,9 @@ public class SettingsController {
 		System.out.println(laivat);
 	}
 	
-=======
+
 	// asetusten valinnan jälkeen
->>>>>>> refs/remotes/origin/josefiinan
+
 	@FXML
 	void valmisKlikattu(ActionEvent event) throws IOException {
 		makeList();
@@ -135,22 +132,11 @@ public class SettingsController {
 		} else {
 		// kun kaikki asetukset OK, välitetään tehdyt valinnat shipsControlleriin ja siirrytään pelilautojen asetteluun
 
-<<<<<<< HEAD
-//		player1.setNimi(p1.getText());
-//		player2.setNimi(p2.getText());
 
-	
-	
-	//
-		
-		
-		
-			FXMLLoader loader=new FXMLLoader(getClass().getResource("board.fxml"));
-=======
+
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("board.fxml"));
->>>>>>> refs/remotes/origin/josefiinan
+
 			Parent root = loader.load();
-<<<<<<< HEAD
 			
 			//välitetään tiedot
 			setShipsController shipsController=loader.getController();
@@ -163,25 +149,12 @@ public class SettingsController {
 			//laivat
 			shipsController.createShips(laivat, Integer.valueOf(koko) );
 			
-=======
-	
-			// välitetään tiedot
-			setShipsController shipsController = loader.getController();
-			// lauta
-			shipsController.displayLauta(Integer.valueOf(koko));
-			// laivat
-			shipsController.createLentotukialus(lta.getValue(), Integer.valueOf(koko));
-			shipsController.createTaistelulaiva(tl.getValue(), Integer.valueOf(koko));
-			shipsController.createRisteilija(r.getValue(), Integer.valueOf(koko));
-			shipsController.createSukellusvene(sv.getValue(), Integer.valueOf(koko));
-			shipsController.createHavittaja(h.getValue(), Integer.valueOf(koko));
-	
->>>>>>> refs/remotes/origin/josefiinan
+			
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-			System.out.println("halleluja");
+
 		}
 
 	}
