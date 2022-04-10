@@ -110,7 +110,7 @@ public class setShipsController {
 	public void createHavittaja(int maara, int lkoko) {
 		for (int i = 0; i < maara; i++) {
 			double ruutu = 400 / lkoko;
-			Ship laiva = new Ship(0);
+			Ship laiva = new Ship(2);
 			laiva.setWidth(ruutu);
 			laiva.setHeight(2 * ruutu);
 			laivaParkki.setAlignment(laiva, Pos.BOTTOM_CENTER);

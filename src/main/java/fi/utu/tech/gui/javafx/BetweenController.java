@@ -49,6 +49,8 @@ public class BetweenController {
 
 		// välitetään tiedot
 		GameController gameController = loader.getController();
+		
+
 		// lauta
 		// katsotaan kenen pelaajan vuoro on ja lähetetään päivitettyt laudat
 		// gamecontrollerille

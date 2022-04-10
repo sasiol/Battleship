@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -42,6 +43,39 @@ public class GameController {
 	// siirry väliruutuun, sama kuin PlacementControllerissa
 	@FXML
 	public void switchToBetweenScreen(ActionEvent event) throws IOException {
+		//katotaan kenen lauta on tällä hetkellä
+		Board b;
+		if ((vuoro % 2) == 0) {
+			 b = laudat.get(0);
+//			 System.out.println("pelaaja on" +nimi.getText());
+//			 System.out.println("vastustaja hävinnyt"+b.getHavittu());
+			
+		} else {
+			b = laudat.get(1);
+//			System.out.println("pelaaja on "+nimi.getText());
+//			System.out.println("vastustaja gävinny"+b.getHavittu());
+		}
+		//jos vastusja on hävinnyt tiedetään kuka voitti
+		//jos ei voittanut niin jatketaan peliä
+			System.out.println(b.getHavittu());
+			if(b.getHavittu()) {
+				
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("winScreen.fxml"));
+				Parent root = loader.load();
+				// välitetään tiedot
+				WinController wController = loader.getController();
+				// voittajaa
+				String voittaja =nimi.getText();
+				
+				wController.setWinner(voittaja);
+				Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+					}
+			else {
+				
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("betweenScreen.fxml"));
 		Parent root = loader.load();
 		// välitetään tiedot
@@ -55,24 +89,33 @@ public class GameController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	// Siirry voittoruutuun
-	@FXML
-	public void switchToWinScreen(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("winScreen.fxml"));
-		Parent root = loader.load();
-		// välitetään tiedot
-		WinController wController = loader.getController();
-		// voittajaa
-		String voittaja = "";
-		if ((vuoro % 2) == 0) {
-			voittaja = laudat.get(0).getPelaaja();
-		} else {
-			voittaja = laudat.get(0).getPelaaja();
-		}
-		wController.setWinner(voittaja);
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
 }
+	}
+	// Siirry voittoruutuun
+//	@FXML
+//	public void switchToWinScreen(ActionEvent event) throws IOException {
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource("winScreen.fxml"));
+//		Parent root = loader.load();
+//		// välitetään tiedot
+//		WinController wController = loader.getController();
+//		// voittajaa
+//		String voittaja = "";
+//		if ((vuoro % 2) == 0) {
+//			voittaja = laudat.get(0).getPelaaja();
+//		} else {
+//			voittaja = laudat.get(0).getPelaaja();
+//		}
+//		wController.setWinner(voittaja);
+//		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//		Scene scene = new Scene(root);
+//		stage.setScene(scene);
+//		stage.show();
+//	}
+//	public void tarkistaOnkoVoittajaa() throws IOException {
+//	for(Board b:laudat) {
+//		
+//		if(b.getHP()==0) {
+//			switchToWinScreen(e);		}
+//	}
+//	}
+

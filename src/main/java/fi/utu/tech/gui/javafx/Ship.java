@@ -1,5 +1,6 @@
 package fi.utu.tech.gui.javafx;
 
+import java.io.IOException;
 import java.util.UUID;
 
 import javafx.scene.Node;
@@ -33,7 +34,12 @@ public class Ship extends Rectangle {
 			if (this.getParent().getParent().getId().contentEquals("peliRuutu")) {
 
 				hp = hp - 1;
-				((Board) this.getParent()).miinustaHP();
+				try {
+					((Board) this.getParent()).miinustaHP();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			} else {
 				// nothing

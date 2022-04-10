@@ -27,7 +27,7 @@ public class WinController {
 	}
 
 	public void setWinner(String nimi) {
-		winner.setText("Player" + nimi + "Wins");
+		winner.setText("Player " + nimi + " Wins");
 
 	}
 

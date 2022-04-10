@@ -12,7 +12,7 @@
          <children>
             <Label fx:id="nimi" />
             <Button fx:id="turnButton" alignment="CENTER" mnemonicParsing="false" onAction="#switchToBetweenScreen" text="Turn over" textAlignment="CENTER" />
-            <Button mnemonicParsing="false" onAction="#switchToWinScreen" prefHeight="24.0" prefWidth="84.0" text="Joku voitti" />
+            <Button mnemonicParsing="false"  prefHeight="24.0" prefWidth="84.0" text="Joku voitti" />
          </children>
       </VBox>
    </right>

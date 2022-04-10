@@ -1,11 +1,14 @@
 package fi.utu.tech.gui.javafx;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
@@ -31,6 +34,7 @@ public class Board extends Pane {
 	private ArrayList<Ship> laivat = new ArrayList<>();
 	private ArrayList<Button> nappulat = new ArrayList<>();
 	private int hp;
+	private boolean havittu;
 
 	public Board(StackPane laivaParkki, int koko, String pelaaja) {
 		super();
@@ -166,23 +170,36 @@ public class Board extends Pane {
 			}
 		}
 	};
+	public int getHP() {
+		System.out.println("HP on"+hp);
+		return hp;
+	};
 
 	// asetetaan laudalle laivojen yhteinen hp
 	public void setHP(int h) {
 		this.hp = hp + h;
 	}
 
-	public void miinustaHP() {
+	public void miinustaHP() throws IOException {
 		this.hp--;
-
+System.out.println("pelaajan "+pelaaja+"HP on"+hp);
 		if (hp == 0) {
-			System.out.println("VOITIIIT!!!");
+			
+			
+			setHavittu(true);
+			System.out.println(pelaaja+"hävisi" +havittu);
 		}
 	}
 
 	public GridPane getSalaus() {
 		// TODO Auto-generated method stub
 		return salaus;
+	}
+	public void setHavittu(boolean i) {
+		this.havittu=i;
+	}
+	public boolean getHavittu() {
+		return havittu;
 	}
 
 }
