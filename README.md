@@ -13,25 +13,23 @@ Työstimme projektia suurilta osin kaikki yhdessä koodikerhossa sekä web-kurss
 
 Kommunikoinnissa käytimme Discordia sekä WhatsAppia.
 
-**Pelin toiminta:**
+**Pelin toiminta (ja mikä ei toimi):**
 
-Alku menussa pelaaja voi aloittaa pelin tai poistua sovelluksesta.
+Alkuvalikossa pelaaja voi aloittaa pelin tai poistua sovelluksesta. Pelin lopettamiseen löytyy myös Exit Game -nappi jokaisesta näkymästä, jonka avulla peli keskeytyy.
 
-Kun peli aloitetaan, aukeaa peliasetusten näkymä, jossa syötetään pelaajien nimet, valitaan laudan koko sekä haluttu määrä erilaisia aluksia.
+Kun peli aloitetaan, aukeaa peliasetusten näkymä, jossa syötetään pelaajien nimet, valitaan laudan koko sekä haluttu määrä erilaisia aluksia. Pelissä ei pysty etenemään ennen kuin tarvittavat tiedot on täytetty.
 
-Kun asetuksen on valittu, siirrytään laivojen asetteluun. Laivojen raahaus saattaa asettaa laivat ruutujen väliin, jolloin pelaajan pitää asetella laivat oikeille kohdilleen ylös ja vasemmalle nuolinäppäimillä tai raahaamalla uudelleen.
+Kun asetukset on valittu, siirrytään laivojen asetteluun. Laivojen raahaus temppuilee. Joskus laiva ei seuraa hiirtä tai laiva saattaa asettua ruutujen väliin, jolloin pelaajan pitää asetella laivat oikeille kohdilleen ylös ja vasemmalle nuolinäppäimillä tai raahaamalla uudelleen. Ensimmäisen pelaajan ollessa valmis, hänen täytyy painaa 1 Ready -nappia ja toisen pelaajan 2 Ready-nappia. Kun molemmat pelaajat ovat asettaneet laivat pelilaudoilleen, siirrytään itse pelinäkymään.
 
-Kun molemmat pelaajat ovat asettaneet laivat pelilaudoilleen, siirrytään itse pelinäkymään.
-
-Jos pelaaja ampuu ohi, pelaajan täytyy itse klikata 'turn over' -nappia, josta vuoro vaihtuu. Pelaaja voi myös *laittomasti* klikata samaa kohtaa aluksesta, jolloin laiva uppoaa, vaikka koko laivaa ei ole paljastettu. Laivaa pystyy myös kääntämään pelin aikana, mikä on myös sääntöjen vastaista.
+Pelaaja ampuu klikkaamalla ruudukkoa. Jos ruudun takaa paljastuu laiva, sitä pitää klikata uudelleen, jotta osuma lasketaan. Jos pelaaja ampuu ohi, pelaajan täytyy itse klikata 'turn over' -nappia, josta vuoro vaihtuu. Pelaaja voi myös *laittomasti* ampua samaa kohtaa aluksesta, jolloin laivan HP loppuu ja laiva uppoaa, vaikka koko laivaa ei ole paljastettu. Laivaa pystyy myös kääntämään pelin aikana, mikä on sääntöjen vastaista.
 
 Pelaajien vuorojen välissä näkyy väliruutu, josta voi siirtyä eteenpäin seuraavan pelaajan vuoroon.
 
-Kun jompikumpi pelaaja on ampunut kaikki toisen pelaajan laivat, siirrytään voittoruutuun. Pelaajat voivat aloittaa uuden pelin tai poistua sovelluksesta.
+Kun jommankumman pelaajan laivastosta loppu HP, siirrytään voittoruutuun. Pelissä on myös huijausnappi, insta-win, josta pääsee heti voittonäkymään. Voittonäkymässä pelaajilla on mahdollisuus aloittaa uusi peli tai poistua sovelluksesta.
 
 **Muuta huomioitavaa työstä:**
 
-Emme ehtineet toteuttamaan pelilogiikkaa kokonaan. Pelin toimiminen on siis osittain kiinni pelaajien tunnollisuudesta.
+Emme ehtineet tehdä pelilogiikasta niin toimivaa kuin halusimme. Pelin toimiminen on siis osittain kiinni pelaajien tunnollisuudesta.
 
 **Jälkiviisastelua:**
 
