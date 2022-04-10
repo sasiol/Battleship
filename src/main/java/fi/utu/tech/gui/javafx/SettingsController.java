@@ -3,7 +3,6 @@ package fi.utu.tech.gui.javafx;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +18,6 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 // Pelin asetusten laittaminen
@@ -28,9 +26,8 @@ public class SettingsController {
 
 	private Pelaaja player1 = new Pelaaja();
 	private Pelaaja player2 = new Pelaaja();
-	
-	private ArrayList<Integer> laivat=new ArrayList<>();
-		
+
+	private ArrayList<Integer> laivat = new ArrayList<>();
 
 	@FXML
 	private MenuButton laudanKoko;
@@ -93,7 +90,7 @@ public class SettingsController {
 		koko = ((MenuItem) event.getSource()).getText();
 		laudanKoko.setText(koko + "x" + koko);
 		System.out.println("Nyt on hyvä koko :)");
-		ruudut.setText(String.valueOf(Integer.parseInt(koko)*Integer.parseInt(koko)/ 2));
+		ruudut.setText(String.valueOf(Integer.parseInt(koko) * Integer.parseInt(koko) / 2));
 
 		laudanKoko.setDisable(true);
 	}
@@ -104,16 +101,13 @@ public class SettingsController {
 		alert.setTitle("Attention!");
 		alert.setHeaderText("Game settings are incomplete.");
 		alert.setContentText("Please check that you have filled all necessary information.");
-		
+
 		DialogPane dialogPane = alert.getDialogPane();
-		dialogPane.getStylesheets().add(
-		   getClass().getResource("dialog.css").toExternalForm());
+		dialogPane.getStylesheets().add(getClass().getResource("dialog.css").toExternalForm());
 		dialogPane.getStyleClass().add("myDialog");
-		
+
 		alert.showAndWait();
 	}
-
-	
 
 	void makeList() {
 		laivat.add(lta.getValue());
@@ -123,7 +117,6 @@ public class SettingsController {
 		laivat.add(h.getValue());
 		System.out.println(laivat);
 	}
-	
 
 	// asetusten valinnan jälkeen
 
@@ -139,9 +132,8 @@ public class SettingsController {
 						&& sv.getValue().equals(0) && h.getValue().equals(0))) {
 			alertWindow();
 		} else {
-		// kun kaikki asetukset OK, välitetään tehdyt valinnat shipsControlleriin ja siirrytään pelilautojen asetteluun
-
-
+			// kun kaikki asetukset OK, välitetään tehdyt valinnat shipsControlleriin ja
+			// siirrytään pelilautojen asetteluun
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("board.fxml"));
 
@@ -153,12 +145,10 @@ public class SettingsController {
 			shipsController.createLauta(Integer.valueOf(koko), p1.getText());
 			shipsController.createLauta(Integer.valueOf(koko), p2.getText());
 			shipsController.displayLauta(0);
-		
-			
-			//laivat
-			shipsController.createShips(laivat, Integer.valueOf(koko) );
-			
-			
+
+			// laivat
+			shipsController.createShips(laivat, Integer.valueOf(koko));
+
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().addAll(this.getClass().getResource("boardStyle.css").toExternalForm());
